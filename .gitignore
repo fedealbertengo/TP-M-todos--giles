@@ -61,3 +61,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+/TP Métodos Ágiles/nbproject/private/
+/TP Métodos Ágiles/build/
