@@ -52,6 +52,7 @@ public class Conexion {
                 Object obj = ob.getConstructor(String.class).newInstance(objeto);
                 result.add(obj);
             }
+            con.close();
             return result;
         } catch (Exception ex) {
             throw ex;
