@@ -86,14 +86,12 @@ public class Inicio extends javax.swing.JFrame {
                 new Inicio().setVisible(true);
             }
         });
-        /*
+        
         try {
-            ArrayList<ConsultaGenerica> ls = (ArrayList<ConsultaGenerica>)(Object)Conexion.consultar("SELECT COUNT(*) AS Cuenta FROM Titular WHERE (FechaBaja IS NULL)", ConsultaGenerica.class);
+            ArrayList<ConsultaGenerica> ls = (ArrayList<ConsultaGenerica>)(Object)Conexion.consultar("SELECT * FROM Information_Schema.TABLES", ConsultaGenerica.class);
             if(ls.size() > 0){
                 for(ConsultaGenerica t: ls){
-                    for(String key : t.getRespuestas().keySet()){
-                        System.out.print(key + ": " + t.getRespuestas().get(key) + " | ");
-                    }
+                    System.out.print(t.toString());
                     System.out.print("\n");
                 }
             }
@@ -103,7 +101,6 @@ public class Inicio extends javax.swing.JFrame {
         } catch (Exception ex) {
             System.out.print(ex.getMessage());
         }
-        */
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
