@@ -10,6 +10,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import CEntidades.*;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -82,6 +86,21 @@ public class Inicio extends javax.swing.JFrame {
                 new Inicio().setVisible(true);
             }
         });
+        /*
+        try {
+            ArrayList<Titular> ls = (ArrayList<Titular>)(Object)Conexion.consultar("SELECT * FROM Titular WHERE (FechaBaja IS NULL)", Titular.class);
+            if(ls.size() > 0){
+                for(Titular t: ls){
+                    System.out.println(t.getNombre() + " " + t.getApellido() + " " + t.getFechaNacimiento());
+                }
+            }
+            else{
+                System.out.print("No hay ningún dato relacionado con su consulta.\n");
+            }
+        } catch (Exception ex) {
+            System.out.print(ex.getMessage());
+        }
+        */
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

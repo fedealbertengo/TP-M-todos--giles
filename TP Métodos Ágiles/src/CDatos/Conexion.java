@@ -10,6 +10,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import CEntidades.*;
+
 /**
  *
  * @author fede_
@@ -37,8 +39,15 @@ public class Conexion {
             String objeto;
             while(rs.next()){
                 objeto = "";
-                for(int i=1; i<=rs.getMetaData().getColumnCount(); i++){
-                    objeto += rs.getMetaData().getColumnName(i) + " - " + rs.getString(i) + "\n";
+                if(ob == ConsultaGenerica.class){
+                    for(int i=1; i<=rs.getMetaData().getColumnCount(); i++){
+                        objeto += rs.getMetaData().getColumnName(i) + " - " + rs.getString(i) + "\t";
+                    }
+                }
+                else{
+                    for(int i=1; i<=rs.getMetaData().getColumnCount(); i++){
+                        objeto += rs.getString(i) + "\t";
+                    }
                 }
                 Object obj = ob.getConstructor(String.class).newInstance(objeto);
                 result.add(obj);
