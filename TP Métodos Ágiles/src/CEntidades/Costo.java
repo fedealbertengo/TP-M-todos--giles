@@ -1,10 +1,10 @@
 package CEntidades;
 
 public class Costo {
-    long ID;
-    char Clase;
-    int Vigencia;
-    double Costo;
+    public long ID;
+    public char Clase;
+    public int Vigencia;
+    public double Costo;
     
     public Costo(){
         

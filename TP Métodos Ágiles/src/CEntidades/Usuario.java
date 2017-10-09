@@ -1,18 +1,16 @@
 package CEntidades;
 
-import java.sql.Date;
-
 public class Usuario {
     
-    long ID;
-    String Apellido;
-    String Nombre;
-    String TipoDocumento;
-    long NumeroDocumento;
-    String NombreUsuario;
-    String Contrasenia;
-    boolean EsAdministrador;
-    boolean EsSuperusuario;
+    public long ID;
+    public String Apellido;
+    public String Nombre;
+    public String TipoDocumento;
+    public long NumeroDocumento;
+    public String NombreUsuario;
+    public String Contrasenia;
+    public boolean EsAdministrador;
+    public boolean EsSuperusuario;
     
     public Usuario(){
         

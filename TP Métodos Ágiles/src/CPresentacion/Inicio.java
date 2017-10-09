@@ -6,14 +6,14 @@
 package CPresentacion;
 
 import CDatos.Conexion;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import CEntidades.*;
+import CLogica.GestorUtilidades;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Vector;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -37,21 +37,101 @@ public class Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btnConsultar = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaResultados = new javax.swing.JTable();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnConsultar.setText("Consultar");
+        btnConsultar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnConsultarMouseClicked(evt);
+            }
+        });
+
+        tablaResultados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(tablaResultados);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(159, Short.MAX_VALUE)
+                .addComponent(btnConsultar)
+                .addGap(157, 157, 157))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnConsultar)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    
+    private void btnConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseClicked
+        /*
+        try {
+            ArrayList<ConsultaGenerica> ls = (ArrayList<ConsultaGenerica>)(Object)Conexion.consultar("SELECT * FROM Information_Schema.TABLES", ConsultaGenerica.class);
+            if(ls.size() > 0){
+                GestorUtilidades.llenarTabla(tablaResultados, ls);
+            }
+            else{
+                System.out.print("No hay ningún dato relacionado con su consulta.\n");
+            }
+        } catch (Exception ex) {
+            System.out.print(ex.getMessage());
+        }
+        */
+        
+        try {
+            ArrayList<Object> ls = Conexion.consultar("SELECT * FROM Usuario", Usuario.class);
+            if(ls.size() > 0){
+                GestorUtilidades.llenarTabla(tablaResultados, ls);
+            }
+            else{
+                System.out.print("No hay ningún dato relacionado con su consulta.\n");
+            }
+        } catch (Exception ex) {
+            System.out.print(ex.getMessage());
+        }
+    }//GEN-LAST:event_btnConsultarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -86,40 +166,13 @@ public class Inicio extends javax.swing.JFrame {
                 new Inicio().setVisible(true);
             }
         });
-        
-        /*
-        try {
-            ArrayList<ConsultaGenerica> ls = (ArrayList<ConsultaGenerica>)(Object)Conexion.consultar("SELECT * FROM Information_Schema.TABLES", ConsultaGenerica.class);
-            if(ls.size() > 0){
-                for(ConsultaGenerica t: ls){
-                    System.out.print(t.toString());
-                    System.out.print("\n");
-                }
-            }
-            else{
-                System.out.print("No hay ningún dato relacionado con su consulta.\n");
-            }
-        } catch (Exception ex) {
-            System.out.print(ex.getMessage());
-        }
-        */
-        
-        try {
-            ArrayList<Titular> ls = (ArrayList<Titular>)(Object)Conexion.consultar("SELECT * FROM Titular", Titular.class);
-            if(ls.size() > 0){
-                for(Titular t: ls){
-                    System.out.print(t.getUsuario().getNombreUsuario() + " - " + t.getLicencias().size());
-                    System.out.print("\n");
-                }
-            }
-            else{
-                System.out.print("No hay ningún dato relacionado con su consulta.\n");
-            }
-        } catch (Exception ex) {
-            System.out.print(ex.getMessage());
-        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConsultar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaResultados;
     // End of variables declaration//GEN-END:variables
 }

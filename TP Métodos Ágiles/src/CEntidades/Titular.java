@@ -7,20 +7,20 @@ import java.util.ArrayList;
 
 public class Titular {
     
-    long ID;
-    String Apellido;
-    String Nombre;
-    String TipoDocumento;
-    long NumeroDocumento;
-    Date FechaNacimiento;
-    String Direccion;
-    char ClaseLicencia;
-    String GrupoSanguineo;
-    boolean FactorRH;
-    boolean Donante;
-    Date FechaCreacion;
-    Date FechaBaja;
-    long IdUsuario;
+    public long ID;
+    public String Apellido;
+    public String Nombre;
+    public String TipoDocumento;
+    public long NumeroDocumento;
+    public Date FechaNacimiento;
+    public String Direccion;
+    public char ClaseLicencia;
+    public String GrupoSanguineo;
+    public boolean FactorRH;
+    public boolean Donante;
+    public Date FechaCreacion;
+    public Date FechaBaja;
+    public long IdUsuario;
     
     public Titular(){
         

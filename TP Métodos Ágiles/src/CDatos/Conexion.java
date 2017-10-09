@@ -33,8 +33,9 @@ public class Conexion {
     
     public static ArrayList<Object> consultar(String query, Class<? extends Object> ob) throws Exception{
         ArrayList<Object> result = new ArrayList<Object>();
+        Connection con = null;
         try {
-            Connection con = Conexion.conectar();
+            con = Conexion.conectar();
             ResultSet rs = con.createStatement().executeQuery(query);
             String objeto;
             while(rs.next()){
@@ -52,10 +53,14 @@ public class Conexion {
                 Object obj = ob.getConstructor(String.class).newInstance(objeto);
                 result.add(obj);
             }
-            con.close();
-            return result;
         } catch (Exception ex) {
             throw ex;
+        }
+        finally{
+            if(con != null){
+                con.close();
+            }
+            return result;
         }
     }
 }

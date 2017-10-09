@@ -7,13 +7,13 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 public class Licencia {
-    long ID;
-    long IdTitular;
-    Date FechaEmision;
-    Date FechaExpiracion;
-    long IdUsuario;
-    Long IdOriginal;
-    boolean EsRenovacion;
+    public long ID;
+    public long IdTitular;
+    public Date FechaEmision;
+    public Date FechaExpiracion;
+    public long IdUsuario;
+    public Long IdOriginal;
+    public boolean EsRenovacion;
 
     public Licencia(){
         

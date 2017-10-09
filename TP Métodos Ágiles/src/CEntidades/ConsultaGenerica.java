@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class ConsultaGenerica {
-    Map<String, String> resultados;
+    public Map<String, String> resultados;
     
     public ConsultaGenerica(String rta){
         String[] rtas = rta.split("\t");
