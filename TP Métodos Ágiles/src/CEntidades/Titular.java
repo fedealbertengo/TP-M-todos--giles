@@ -1,6 +1,9 @@
 package CEntidades;
 
+import CLogica.GestorLicencia;
 import java.sql.Date;
+import CLogica.GestorUsuario;
+import java.util.ArrayList;
 
 public class Titular {
     
@@ -173,5 +176,23 @@ public class Titular {
 
     public void setIdUsuario(long IdUsuario) {
         this.IdUsuario = IdUsuario;
+    }
+    
+    public Usuario getUsuario() throws Exception{
+        try{
+            return GestorUsuario.getUsuario(this.IdUsuario);
+        }
+        catch(Exception ex){
+            throw ex;
+        }
+    }
+    
+    public ArrayList<Licencia> getLicencias() throws Exception{
+        try{
+            return GestorLicencia.getLicenciasTitular(this.IdUsuario);
+        }
+        catch(Exception ex){
+            throw ex;
+        }
     }
 }

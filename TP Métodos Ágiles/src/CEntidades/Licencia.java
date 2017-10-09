@@ -1,5 +1,8 @@
 package CEntidades;
 
+import CLogica.GestorLicencia;
+import CLogica.GestorTitular;
+import CLogica.GestorUsuario;
 import java.sql.Date;
 
 public class Licencia {
@@ -95,5 +98,32 @@ public class Licencia {
 
     public void setEsRenovacion(boolean EsRenovacion) {
         this.EsRenovacion = EsRenovacion;
+    }
+    
+    public Usuario getUsuario() throws Exception{
+        try{
+            return GestorUsuario.getUsuario(this.IdUsuario);
+        }
+        catch(Exception ex){
+            throw ex;
+        }
+    }
+    
+    public Titular getTitular() throws Exception{
+        try{
+            return GestorTitular.getTitular(this.IdTitular);
+        }
+        catch(Exception ex){
+            throw ex;
+        }
+    }
+        
+    public Licencia getLicenciaOriginal() throws Exception{
+        try{
+            return GestorLicencia.getLicencia(this.IdOriginal);
+        }
+        catch(Exception ex){
+            throw ex;
+        }
     }
 }

@@ -87,11 +87,28 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         
+        /*
         try {
             ArrayList<ConsultaGenerica> ls = (ArrayList<ConsultaGenerica>)(Object)Conexion.consultar("SELECT * FROM Information_Schema.TABLES", ConsultaGenerica.class);
             if(ls.size() > 0){
                 for(ConsultaGenerica t: ls){
                     System.out.print(t.toString());
+                    System.out.print("\n");
+                }
+            }
+            else{
+                System.out.print("No hay ningún dato relacionado con su consulta.\n");
+            }
+        } catch (Exception ex) {
+            System.out.print(ex.getMessage());
+        }
+        */
+        
+        try {
+            ArrayList<Titular> ls = (ArrayList<Titular>)(Object)Conexion.consultar("SELECT * FROM Titular", Titular.class);
+            if(ls.size() > 0){
+                for(Titular t: ls){
+                    System.out.print(t.getUsuario().getNombreUsuario() + " - " + t.getLicencias().size());
                     System.out.print("\n");
                 }
             }
