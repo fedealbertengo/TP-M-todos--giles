@@ -1,13 +1,20 @@
 package CEntidades;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ConsultaGenerica {
-    String respuesta;
+    Map<String, String> respuestas;
     
     public ConsultaGenerica(String rta){
-        respuesta = rta;
+        String[] rtas = rta.split("\t");
+        respuestas = new HashMap<String, String>();
+        for(String str: rtas){
+            respuestas.put((str.split("-")[0]).trim(), (str.split("-")[1]).trim());
+        }
     }
     
-    public String getRespuesta(){
-        return respuesta;
+    public Map<String, String> getRespuestas(){
+        return respuestas;
     }
 }

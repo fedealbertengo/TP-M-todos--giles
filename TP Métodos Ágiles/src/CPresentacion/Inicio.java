@@ -88,10 +88,13 @@ public class Inicio extends javax.swing.JFrame {
         });
         /*
         try {
-            ArrayList<Titular> ls = (ArrayList<Titular>)(Object)Conexion.consultar("SELECT * FROM Titular WHERE (FechaBaja IS NULL)", Titular.class);
+            ArrayList<ConsultaGenerica> ls = (ArrayList<ConsultaGenerica>)(Object)Conexion.consultar("SELECT COUNT(*) AS Cuenta FROM Titular WHERE (FechaBaja IS NULL)", ConsultaGenerica.class);
             if(ls.size() > 0){
-                for(Titular t: ls){
-                    System.out.println(t.getNombre() + " " + t.getApellido() + " " + t.getFechaNacimiento());
+                for(ConsultaGenerica t: ls){
+                    for(String key : t.getRespuestas().keySet()){
+                        System.out.print(key + ": " + t.getRespuestas().get(key) + " | ");
+                    }
+                    System.out.print("\n");
                 }
             }
             else{
