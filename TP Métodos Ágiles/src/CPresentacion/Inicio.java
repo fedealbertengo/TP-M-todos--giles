@@ -106,9 +106,10 @@ public class Inicio extends javax.swing.JFrame {
 
     
     private void btnConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseClicked
-        /*
+
+        
         try {
-            ArrayList<ConsultaGenerica> ls = (ArrayList<ConsultaGenerica>)(Object)Conexion.consultar("SELECT * FROM Information_Schema.TABLES", ConsultaGenerica.class);
+            ArrayList<Object> ls = Conexion.consultar("SELECT * FROM Information_Schema.TABLES", ConsultaGenerica.class);
             if(ls.size() > 0){
                 GestorUtilidades.llenarTabla(tablaResultados, ls);
             }
@@ -118,8 +119,8 @@ public class Inicio extends javax.swing.JFrame {
         } catch (Exception ex) {
             System.out.print(ex.getMessage());
         }
-        */
         
+        /*
         try {
             ArrayList<Object> ls = Conexion.consultar("SELECT * FROM Usuario", Usuario.class);
             if(ls.size() > 0){
@@ -131,6 +132,7 @@ public class Inicio extends javax.swing.JFrame {
         } catch (Exception ex) {
             System.out.print(ex.getMessage());
         }
+        */
     }//GEN-LAST:event_btnConsultarMouseClicked
 
     /**
