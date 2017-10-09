@@ -24,4 +24,13 @@ public class GestorLicencia {
         }
     }
     
+        public static ArrayList<Licencia> getRenovaciones(long idLic) throws Exception{
+        try{
+            return LicenciaDB.getRenovaciones(idLic);
+        }
+        catch(Exception ex){
+            throw ex;
+        }
+    }
+    
 }

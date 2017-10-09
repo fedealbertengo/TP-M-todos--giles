@@ -22,4 +22,13 @@ public class LicenciaDB {
             throw ex;
         }
     }
+    
+        public static ArrayList<Licencia> getRenovaciones(long idLic) throws Exception{
+        try{
+            return ((ArrayList<Licencia>)(Object)Conexion.consultar("SELECT * FROM Licencia WHERE IdOriginal = " + idLic, Licencia.class));
+        }
+        catch(Exception ex){
+            throw ex;
+        }
+    }
 }

@@ -4,6 +4,7 @@ import CLogica.GestorLicencia;
 import CLogica.GestorTitular;
 import CLogica.GestorUsuario;
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class Licencia {
     long ID;
@@ -121,6 +122,15 @@ public class Licencia {
     public Licencia getLicenciaOriginal() throws Exception{
         try{
             return GestorLicencia.getLicencia(this.IdOriginal);
+        }
+        catch(Exception ex){
+            throw ex;
+        }
+    }
+    
+    public ArrayList<Licencia> getRenovaciones() throws Exception{
+        try{
+            return GestorLicencia.getRenovaciones(this.ID);
         }
         catch(Exception ex){
             throw ex;
