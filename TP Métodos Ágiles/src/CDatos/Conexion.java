@@ -63,4 +63,19 @@ public class Conexion {
             return result;
         }
     }
+    
+    public static void ejecutarSentencia(String query) throws Exception{
+        Connection con = null;
+        try {
+            con = Conexion.conectar();
+            con.createStatement().executeUpdate(query);
+        } catch (Exception ex) {
+            throw ex;
+        }
+        finally{
+            if(con != null){
+                con.close();
+            }
+        }
+    }
 }

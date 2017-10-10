@@ -26,8 +26,7 @@ public class Titular {
         
     }
     
-    public Titular(long id, String ape, String nom, String tipodoc, long nrodoc, Date fechanac, String direc, char claselic, String gruposang, boolean factrh, boolean dona, Date fechacre, Date fechabaj, long idusu){
-        ID = id;
+    public Titular(String ape, String nom, String tipodoc, long nrodoc, Date fechanac, String direc, char claselic, String gruposang, boolean factrh, boolean dona, Date fechacre, Date fechabaj, long idusu){
         Apellido = ape;
         Nombre = nom;
         TipoDocumento = tipodoc;

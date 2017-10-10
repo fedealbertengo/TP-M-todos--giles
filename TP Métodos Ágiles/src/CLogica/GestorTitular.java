@@ -14,4 +14,13 @@ public class GestorTitular {
         }
     } 
     
+    public static void altaTitular(Titular tit) throws Exception{
+        try{
+            TitularDB.altaTitular(tit);
+        }
+        catch(Exception ex){
+            throw ex;
+        }
+    }
+    
 }

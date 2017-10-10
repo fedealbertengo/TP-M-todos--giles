@@ -1,7 +1,12 @@
 package CPresentacion;
 
+import CEntidades.Titular;
+import CLogica.GestorTitular;
+import CLogica.GestorUsuario;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.sql.Date;
+import java.util.Calendar;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -248,8 +253,42 @@ public class AltaTitular extends javax.swing.JPanel {
     }//GEN-LAST:event_cmbGrupoSangActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        String mensaje = "";
-        JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+        if((!tfNombre.getText().equals("")) && (!tfApellido.getText().equals("")) && (!tfDocumento.getText().equals("")) && (!dateFechaNac.getText().equals("")) && (!tfDireccion.getText().equals(""))){
+            try{
+                String fechaActual = Calendar.getInstance().getTime().toLocaleString().split(" ")[0].split("/")[2] + "-" + Calendar.getInstance().getTime().toLocaleString().split(" ")[0].split("/")[1] + "-" + Calendar.getInstance().getTime().toLocaleString().split(" ")[0].split("/")[0];
+                String fechaNac = dateFechaNac.getText().split("/")[2] + "-" + dateFechaNac.getText().split("/")[1] + "-" + dateFechaNac.getText().split("/")[0];
+                Titular tit = new Titular(tfNombre.getText(), tfApellido.getText(), (String)cmbTipoDocumento.getSelectedItem(), Long.parseLong(tfDocumento.getText()), Date.valueOf(fechaNac), tfDireccion.getText(), ((String)cmbClaseLicencia.getSelectedItem()).charAt(0), (String)cmbGrupoSang.getSelectedItem(), ((String)cmbFactorSang.getSelectedItem()).equals("+"), cbDonante.isSelected(), Date.valueOf(fechaActual), null, GestorUsuario.getUsuarioLogeado().getID());
+                GestorTitular.altaTitular(tit);
+            }
+            catch(Exception ex){
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else{
+            String mensaje = "Los siguientes campos no pueden estar vacíos:";
+            if(tfNombre.getText().equals("")){
+                mensaje += "\nNombre";
+            }
+            if(tfApellido.getText().equals("")){
+                mensaje += "\nApellido";
+            }
+            
+            if(tfDocumento.getText().equals("")){
+                mensaje += "\nDocumento";
+            }
+            
+            if(dateFechaNac.getText().equals("")){
+                mensaje += "\nFecha de Nacimiento";
+            }
+            
+            if(tfDireccion.getText().equals("")){
+                mensaje += "\nDireccion";
+            }
+            
+            if(mensaje.contains("\n")){
+                JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_btnAceptarActionPerformed
 
 

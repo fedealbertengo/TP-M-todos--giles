@@ -1,5 +1,10 @@
 package CPresentacion;
 
+import CLogica.GestorUsuario;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 public class MenuPrincipal extends javax.swing.JFrame {
 
     /**
@@ -125,6 +130,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
              
             }
         });
+        
+        try {
+            GestorUsuario.setUsuarioLogeado(GestorUsuario.getUsuario(1));
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
