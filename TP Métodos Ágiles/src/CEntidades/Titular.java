@@ -7,33 +7,31 @@ import java.util.ArrayList;
 
 public class Titular {
     
-    public long ID;
+    public Long ID;
     public String Apellido;
     public String Nombre;
     public String TipoDocumento;
-    public long NumeroDocumento;
+    public Long NumeroDocumento;
     public Date FechaNacimiento;
     public String Direccion;
-    public char ClaseLicencia;
     public String GrupoSanguineo;
     public boolean FactorRH;
     public boolean Donante;
     public Date FechaCreacion;
     public Date FechaBaja;
-    public long IdUsuario;
+    public Long IdUsuario;
     
     public Titular(){
         
     }
     
-    public Titular(String ape, String nom, String tipodoc, long nrodoc, Date fechanac, String direc, char claselic, String gruposang, boolean factrh, boolean dona, Date fechacre, Date fechabaj, long idusu){
+    public Titular(String nom, String ape, String tipodoc, Long nrodoc, Date fechanac, String direc, String gruposang, boolean factrh, boolean dona, Date fechacre, Date fechabaj, Long idusu){
         Apellido = ape;
         Nombre = nom;
         TipoDocumento = tipodoc;
         NumeroDocumento = nrodoc;
         FechaNacimiento = fechanac;
         Direccion = direc;
-        ClaseLicencia = claselic;
         GrupoSanguineo = gruposang;
         FactorRH = factrh;
         Donante = dona;
@@ -51,25 +49,18 @@ public class Titular {
         NumeroDocumento = Long.parseLong(atributos[4]);
         FechaNacimiento = Date.valueOf(atributos[5]);
         Direccion = atributos[6];
-        ClaseLicencia = (atributos[7]).charAt(0);
-        GrupoSanguineo = atributos[8];
-        FactorRH = atributos[9].equals("1");
-        Donante = atributos[10].equals("1");
-        FechaCreacion = Date.valueOf(atributos[11]);
-        if(!atributos[12].equals("null")){
-            FechaBaja = Date.valueOf(atributos[12]);
-        }
-        else{
-            FechaBaja = null;
-        }
-        IdUsuario = Long.parseLong(atributos[13]);
+        GrupoSanguineo = atributos[7];
+        FactorRH = atributos[8].equals("1");
+        Donante = atributos[9].equals("1");
+        FechaCreacion = Date.valueOf(atributos[10]);
+        FechaBaja = (!atributos[11].equals("null")) ? Date.valueOf(atributos[11]) : null;
     }
     
-    public long getID() {
+    public Long getID() {
         return ID;
     }
 
-    public void setID(long ID) {
+    public void setID(Long ID) {
         this.ID = ID;
     }
 
@@ -97,11 +88,11 @@ public class Titular {
         this.TipoDocumento = TipoDocumento;
     }
 
-    public long getNumeroDocumento() {
+    public Long getNumeroDocumento() {
         return NumeroDocumento;
     }
 
-    public void setNumeroDocumento(long NumeroDocumento) {
+    public void setNumeroDocumento(Long NumeroDocumento) {
         this.NumeroDocumento = NumeroDocumento;
     }
 
@@ -119,14 +110,6 @@ public class Titular {
 
     public void setDireccion(String Direccion) {
         this.Direccion = Direccion;
-    }
-
-    public char getClaseLicencia() {
-        return ClaseLicencia;
-    }
-
-    public void setClaseLicencia(char ClaseLicencia) {
-        this.ClaseLicencia = ClaseLicencia;
     }
 
     public String getGrupoSanguineo() {
@@ -169,11 +152,11 @@ public class Titular {
         this.FechaBaja = FechaBaja;
     }
 
-    public long getIdUsuario() {
+    public Long getIdUsuario() {
         return IdUsuario;
     }
 
-    public void setIdUsuario(long IdUsuario) {
+    public void setIdUsuario(Long IdUsuario) {
         this.IdUsuario = IdUsuario;
     }
     

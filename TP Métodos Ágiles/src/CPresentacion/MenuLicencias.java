@@ -4,8 +4,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 
-
-public class MenuTitulares extends javax.swing.JPanel {
+public class MenuLicencias extends javax.swing.JPanel {
 
     Container menuAnt;
     JFrame jFrame;
@@ -14,9 +13,8 @@ public class MenuTitulares extends javax.swing.JPanel {
     boolean redimAnt;
     java.awt.event.WindowAdapter wdAnt;
     java.awt.event.WindowAdapter wd;
-    
 
-    public MenuTitulares(JFrame frameAnt, Container menAnt, String titAnt, Dimension dim, boolean redAnt, java.awt.event.WindowAdapter wdAnt) {
+    public MenuLicencias(JFrame frameAnt, Container menAnt, String titAnt, Dimension dim, boolean redAnt, java.awt.event.WindowAdapter wdAnt) {
         initComponents();
         menuAnt = menAnt;
         jFrame = frameAnt;
@@ -41,22 +39,20 @@ public class MenuTitulares extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnEmitirLicencia = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
-        btnAltaTitular = new javax.swing.JButton();
 
-        setPreferredSize(new java.awt.Dimension(296, 262));
+        btnEmitirLicencia.setText("Emitir Licencia");
+        btnEmitirLicencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmitirLicenciaActionPerformed(evt);
+            }
+        });
 
         btnVolver.setText("Volver");
         btnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnVolverMouseClicked(evt);
-            }
-        });
-
-        btnAltaTitular.setText("Alta de Titular");
-        btnAltaTitular.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAltaTitularActionPerformed(evt);
             }
         });
 
@@ -68,22 +64,32 @@ public class MenuTitulares extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(94, 94, 94)
-                        .addComponent(btnAltaTitular))
+                        .addComponent(btnEmitirLicencia))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnVolver)))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(btnAltaTitular)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                .addComponent(btnEmitirLicencia)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
                 .addComponent(btnVolver)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEmitirLicenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmitirLicenciaActionPerformed
+        this.jFrame.removeWindowListener(wd);
+        EmitirLicencia menu = new EmitirLicencia(this.jFrame, this.jFrame.getContentPane(), this.jFrame.getTitle(), this.jFrame.size(), this.jFrame.isResizable(), this.wd);
+        this.jFrame.setContentPane(menu);
+        this.jFrame.setTitle("Emitir Licencia");
+        this.jFrame.invalidate();
+        this.jFrame.validate();
+        this.jFrame.repaint();
+    }//GEN-LAST:event_btnEmitirLicenciaActionPerformed
 
     private void volver(){
         jFrame.setContentPane(menuAnt);
@@ -98,19 +104,9 @@ public class MenuTitulares extends javax.swing.JPanel {
         volver();
     }//GEN-LAST:event_btnVolverMouseClicked
 
-    private void btnAltaTitularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaTitularActionPerformed
-        this.jFrame.removeWindowListener(wd);
-        AltaTitular menu = new AltaTitular(this.jFrame, this.jFrame.getContentPane(), this.jFrame.getTitle(), this.jFrame.size(), this.jFrame.isResizable(), this.wd, true);
-        this.jFrame.setContentPane(menu);
-        this.jFrame.setTitle("Alta de Titular");
-        this.jFrame.invalidate();
-        this.jFrame.validate();
-        this.jFrame.repaint();
-    }//GEN-LAST:event_btnAltaTitularActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAltaTitular;
+    private javax.swing.JButton btnEmitirLicencia;
     private javax.swing.JButton btnVolver;
     // End of variables declaration//GEN-END:variables
 }

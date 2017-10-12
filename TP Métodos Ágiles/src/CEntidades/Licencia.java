@@ -7,11 +7,12 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 public class Licencia {
-    public long ID;
-    public long IdTitular;
+    public Long ID;
+    public Long IdTitular;
+    public char Clase;
     public Date FechaEmision;
     public Date FechaExpiracion;
-    public long IdUsuario;
+    public Long IdUsuario;
     public Long IdOriginal;
     public boolean EsRenovacion;
 
@@ -19,9 +20,10 @@ public class Licencia {
         
     }
     
-    public Licencia(long ID, long IdTitular, Date FechaEmision, Date FechaExpiracion, long IdUsuario, long IdOriginal, boolean EsRenovacion) {
+    public Licencia(Long ID, Long IdTitular, char cla, Date FechaEmision, Date FechaExpiracion, Long IdUsuario, Long IdOriginal, boolean EsRenovacion) {
         this.ID = ID;
         this.IdTitular = IdTitular;
+        this.Clase = cla;
         this.FechaEmision = FechaEmision;
         this.FechaExpiracion = FechaExpiracion;
         this.IdUsuario = IdUsuario;
@@ -33,31 +35,27 @@ public class Licencia {
         String[] atributos = obj.split("\t");
         this.ID = Long.parseLong(atributos[0]);
         this.IdTitular = Long.parseLong(atributos[1]);
-        this.FechaEmision = Date.valueOf(atributos[2]);
-        this.FechaExpiracion = Date.valueOf(atributos[3]);
-        this.IdUsuario = Long.parseLong(atributos[4]);
-        if(!atributos[5].equals("null")){
-            this.IdOriginal = IdOriginal;
-        }
-        else{
-            this.IdOriginal = null;
-        }
+        this.Clase = atributos[2].charAt(0);
+        this.FechaEmision = Date.valueOf(atributos[3]);
+        this.FechaExpiracion = Date.valueOf(atributos[4]);
+        this.IdUsuario = Long.parseLong(atributos[5]);
+        this.IdOriginal = (!atributos[6].equals("null")) ? IdOriginal : null;
         this.EsRenovacion = (this.IdOriginal != null);
     }
 
-    public long getID() {
+    public Long getID() {
         return ID;
     }
 
-    public void setID(long ID) {
+    public void setID(Long ID) {
         this.ID = ID;
     }
 
-    public long getIdTitular() {
+    public Long getIdTitular() {
         return IdTitular;
     }
 
-    public void setIdTitular(long IdTitular) {
+    public void setIdTitular(Long IdTitular) {
         this.IdTitular = IdTitular;
     }
 
@@ -77,11 +75,11 @@ public class Licencia {
         this.FechaExpiracion = FechaExpiracion;
     }
 
-    public long getIdUsuario() {
+    public Long getIdUsuario() {
         return IdUsuario;
     }
 
-    public void setIdUsuario(long IdUsuario) {
+    public void setIdUsuario(Long IdUsuario) {
         this.IdUsuario = IdUsuario;
     }
 

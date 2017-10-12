@@ -24,9 +24,28 @@ public class GestorLicencia {
         }
     }
     
-        public static ArrayList<Licencia> getRenovaciones(long idLic) throws Exception{
+    public static ArrayList<Licencia> getRenovaciones(long idLic) throws Exception{
         try{
             return LicenciaDB.getRenovaciones(idLic);
+        }
+        catch(Exception ex){
+            throw ex;
+        }
+    }
+    
+    private static boolean validarLicencia(){
+        //TODO: Hacer el método
+        return true;
+    }
+    
+    public static void altaLicencia(Licencia lic) throws Exception{
+        try{
+            if(validarLicencia()){
+                LicenciaDB.altaLicencia(lic);
+            }
+            else{
+                throw new Exception("La licencia no contiene datos válidos.");
+            }
         }
         catch(Exception ex){
             throw ex;
