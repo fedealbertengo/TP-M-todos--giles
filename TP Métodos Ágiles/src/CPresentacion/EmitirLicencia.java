@@ -456,7 +456,7 @@ public class EmitirLicencia extends javax.swing.JPanel {
         this.jFrame.removeWindowListener(wd);
         FiltrarTitular menu = new FiltrarTitular(this.jFrame, this.jFrame.getContentPane(), this.jFrame.getTitle(), this.jFrame.size(), this.jFrame.isResizable(), this.wd, true);
         this.jFrame.setContentPane(menu);
-        this.jFrame.setTitle("Alta de Titular");
+        this.jFrame.setTitle("Búsqueda de Titulares");
         this.jFrame.invalidate();
         this.jFrame.validate();
         this.jFrame.repaint();

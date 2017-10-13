@@ -20,34 +20,43 @@ public class GestorUtilidades {
     
     public static void llenarTabla(JTable tabla, ArrayList<Object> list) throws Exception{
         try{
+            DefaultTableModel tableModel = new DefaultTableModel(){
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    //all cells false
+                    return false;
+                 }
+             };
             if(list.get(0).getClass() == ConsultaGenerica.class){
                 ArrayList<ConsultaGenerica> ls = (ArrayList<ConsultaGenerica>)(Object)list;
-                DefaultTableModel tableModel = new DefaultTableModel();
-                for(String campo: ls.get(0).getParametros()){
-                    tableModel.addColumn(campo);
-                }
                 tabla.setModel(tableModel);
-                for(ConsultaGenerica t: ls){
-                    Vector<String> rowData = new Vector<String>();
-                    for(int i=0; i< tableModel.getColumnCount(); i++){
-                        rowData.add(t.getValor(tableModel.getColumnName(i)));
+                if(ls.size() > 0){
+                    for(String campo: ls.get(0).getParametros()){
+                        tableModel.addColumn(campo);
                     }
-                    tableModel.addRow(rowData);
+                    for(ConsultaGenerica t: ls){
+                        Vector<String> rowData = new Vector<String>();
+                        for(int i=0; i< tableModel.getColumnCount(); i++){
+                            rowData.add(t.getValor(tableModel.getColumnName(i)));
+                        }
+                        tableModel.addRow(rowData);
+                    }
                 }
             }
             else{
                 Class cl = list.get(0).getClass();
-                DefaultTableModel tableModel = new DefaultTableModel();
-                for(Field campo: cl.getDeclaredFields()){
-                    tableModel.addColumn(campo.getName());
-                }
                 tabla.setModel(tableModel);
-                for(int i=0; i<list.size(); i++){
-                    Vector<Object> rowData = new Vector<Object>();
-                    for(int j=0; j< tableModel.getColumnCount(); j++){
-                        rowData.add((cl.getDeclaredFields()[j]).get(list.get(i)));
+                if(list.size() > 0){
+                    for(Field campo: cl.getDeclaredFields()){
+                        tableModel.addColumn(campo.getName());
                     }
-                    tableModel.addRow(rowData);
+                    for(int i=0; i<list.size(); i++){
+                        Vector<Object> rowData = new Vector<Object>();
+                        for(int j=0; j< tableModel.getColumnCount(); j++){
+                            rowData.add((cl.getDeclaredFields()[j]).get(list.get(i)));
+                        }
+                        tableModel.addRow(rowData);
+                    }
                 }
             }
         }

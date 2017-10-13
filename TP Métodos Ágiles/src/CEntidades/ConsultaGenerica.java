@@ -1,6 +1,6 @@
 package CEntidades;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -9,7 +9,7 @@ public class ConsultaGenerica {
     
     public ConsultaGenerica(String rta){
         String[] rtas = rta.split("\t");
-        resultados = new HashMap<String, String>();
+        resultados = new LinkedHashMap<String, String>();
         for(String str: rtas){
             resultados.put((str.split("-")[0]).trim(), (str.split("-")[1]).trim());
         }

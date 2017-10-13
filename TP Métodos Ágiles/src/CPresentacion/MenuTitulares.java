@@ -43,6 +43,7 @@ public class MenuTitulares extends javax.swing.JPanel {
 
         btnVolver = new javax.swing.JButton();
         btnAltaTitular = new javax.swing.JButton();
+        btnAltaTitular1 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(296, 262));
 
@@ -60,6 +61,13 @@ public class MenuTitulares extends javax.swing.JPanel {
             }
         });
 
+        btnAltaTitular1.setText("Buscar Titulares");
+        btnAltaTitular1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAltaTitular1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -67,19 +75,23 @@ public class MenuTitulares extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(btnAltaTitular))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnVolver)))
-                .addContainerGap(103, Short.MAX_VALUE))
+                        .addComponent(btnVolver))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAltaTitular1)
+                            .addComponent(btnAltaTitular))))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(btnAltaTitular)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnAltaTitular1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
                 .addComponent(btnVolver)
                 .addContainerGap())
         );
@@ -100,7 +112,7 @@ public class MenuTitulares extends javax.swing.JPanel {
 
     private void btnAltaTitularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaTitularActionPerformed
         this.jFrame.removeWindowListener(wd);
-        AltaTitular menu = new AltaTitular(this.jFrame, this.jFrame.getContentPane(), this.jFrame.getTitle(), this.jFrame.size(), this.jFrame.isResizable(), this.wd, true);
+        AltaTitular menu = new AltaTitular(this.jFrame, this.jFrame.getContentPane(), this.jFrame.getTitle(), this.jFrame.size(), this.jFrame.isResizable(), this.wd);
         this.jFrame.setContentPane(menu);
         this.jFrame.setTitle("Alta de Titular");
         this.jFrame.invalidate();
@@ -108,9 +120,20 @@ public class MenuTitulares extends javax.swing.JPanel {
         this.jFrame.repaint();
     }//GEN-LAST:event_btnAltaTitularActionPerformed
 
+    private void btnAltaTitular1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaTitular1ActionPerformed
+        this.jFrame.removeWindowListener(wd);
+        FiltrarTitular menu = new FiltrarTitular(this.jFrame, this.jFrame.getContentPane(), this.jFrame.getTitle(), this.jFrame.size(), this.jFrame.isResizable(), this.wd);
+        this.jFrame.setContentPane(menu);
+        this.jFrame.setTitle("Búsqueda de Titulares");
+        this.jFrame.invalidate();
+        this.jFrame.validate();
+        this.jFrame.repaint();
+    }//GEN-LAST:event_btnAltaTitular1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAltaTitular;
+    private javax.swing.JButton btnAltaTitular1;
     private javax.swing.JButton btnVolver;
     // End of variables declaration//GEN-END:variables
 }

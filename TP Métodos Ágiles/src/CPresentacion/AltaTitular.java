@@ -285,11 +285,8 @@ public class AltaTitular extends javax.swing.JPanel {
                 GestorTitular.altaTitular(tit);
                 if(llamadoPorOtro){
                     this.idTitularCreado = (((ArrayList<Titular>)((Object)Conexion.consultar("SELECT * FROM Titular WHERE TipoDocumento = '" + (String)cmbTipoDocumento.getSelectedItem() + "' AND NumeroDocumento = " + tfDocumento.getText(), Titular.class))).get(0)).getID();
-                    ((EmitirLicencia)this.menuAnt).setearTitular(idTitularCreado);
-                    jFrame.setContentPane(menuAnt);
-                    jFrame.setTitle(tituloAnt);
-                    jFrame.resize(dimAnt);
-                    jFrame.setResizable(redimAnt);
+                   ((EmitirLicencia)this.menuAnt).setearTitular(idTitularCreado);
+                    volver();
                 }
             }
             catch(Exception ex){

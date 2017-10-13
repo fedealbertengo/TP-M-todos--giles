@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class FiltrarTitular extends javax.swing.JPanel {
 
@@ -89,13 +90,23 @@ public class FiltrarTitular extends javax.swing.JPanel {
                     query += " NumeroDocumento = " + nroDocumento + " AND ";
                 }
                 if(!tipoDocumento.equals("No Filtrar") && !tipoDocumento.equals("")){
-                    query += " TipoDocumento = " + tipoDocumento + " AND ";
+                    query += " TipoDocumento = '" + tipoDocumento + "' AND ";
                 }
                 query = query.substring(0, query.lastIndexOf(" AND "));
             }
             query += ";";
             GestorUtilidades.llenarTabla(tabTitulares, Conexion.consultar(query, ConsultaGenerica.class));
-        } catch (Exception ex) {
+        }
+        catch(IndexOutOfBoundsException ex){
+            tabTitulares.setModel(new DefaultTableModel(){
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    //all cells false
+                    return false;
+                 }
+             });
+        }
+        catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -133,6 +144,12 @@ public class FiltrarTitular extends javax.swing.JPanel {
 
             }
         ));
+        tabTitulares.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tabTitulares.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabTitularesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabTitulares);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -198,13 +215,14 @@ public class FiltrarTitular extends javax.swing.JPanel {
             panTitularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panTitularLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panTitularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(tfIdTitular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panTitularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panTitularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5)
                         .addComponent(tfDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cmbTipoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cmbTipoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panTitularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel8)
+                        .addComponent(tfIdTitular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panTitularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -270,6 +288,16 @@ public class FiltrarTitular extends javax.swing.JPanel {
     private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
         llenarTabla(tfIdTitular.getText(), tfNombre.getText(), tfApellido.getText(), tfDocumento.getText(), (String)cmbTipoDocumento.getSelectedItem());
     }//GEN-LAST:event_btnFiltrarActionPerformed
+
+    private void tabTitularesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabTitularesMouseClicked
+        if (evt.getClickCount() == 2) {
+            if(llamadoPorOtro){
+                Long idTitular = Long.parseLong(((DefaultTableModel) tabTitulares.getModel()).getValueAt(tabTitulares.getSelectedRow(), 0).toString());
+                ((EmitirLicencia)menuAnt).setearTitular(idTitular);
+                volver();
+            }
+        }
+    }//GEN-LAST:event_tabTitularesMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
