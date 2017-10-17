@@ -20,7 +20,7 @@ public class Conexion {
     public static Connection conectar(){
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String connectionUrl = "jdbc:sqlserver://tpmetodosagiles.database.windows.net:1433;databaseName=TPMetodosAgiles;user=FedeAlb;password=metodosagiles12!;";
+            String connectionUrl = "jdbc:sqlserver://tpmetodosagiles.database.secure.windows.net:1433;databaseName=TPMetodosAgiles;user=FedeAlb;password=metodosagiles12!;";
             Connection conect = DriverManager.getConnection(connectionUrl);
             return conect;
         } 
