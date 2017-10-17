@@ -9,6 +9,7 @@ import CDatos.Conexion;
 import CEntidades.Licencia;
 import CEntidades.Titular;
 import CEntidades.Usuario;
+import CLogica.GestorCosto;
 import CLogica.GestorLicencia;
 import CLogica.GestorTitular;
 import CLogica.GestorUsuario;
@@ -41,6 +42,7 @@ public class EmitirLicencia extends javax.swing.JPanel {
     private Licencia licencia = null;
     java.awt.event.WindowAdapter wdAnt;
     java.awt.event.WindowAdapter wd;
+    Long costoLicencia = new Long(0);
 
     public EmitirLicencia(JFrame frameAnt, Container menAnt, String titAnt, Dimension dim, boolean redAnt, java.awt.event.WindowAdapter wdAnt) {
         initComponents();
@@ -86,6 +88,8 @@ public class EmitirLicencia extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         tfFechaExpiracion = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLCosto = new javax.swing.JLabel();
         btnAceptar = new javax.swing.JButton();
 
         btnVolver.setText("Volver");
@@ -230,6 +234,10 @@ public class EmitirLicencia extends javax.swing.JPanel {
 
         tfFechaExpiracion.setEditable(false);
 
+        jLabel3.setText("Costo: $");
+
+        jLCosto.setText("x");
+
         javax.swing.GroupLayout panDetLicLayout = new javax.swing.GroupLayout(panDetLic);
         panDetLic.setLayout(panDetLicLayout);
         panDetLicLayout.setHorizontalGroup(
@@ -243,6 +251,10 @@ public class EmitirLicencia extends javax.swing.JPanel {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tfFechaExpiracion, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLCosto)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panDetLicLayout.setVerticalGroup(
@@ -253,7 +265,9 @@ public class EmitirLicencia extends javax.swing.JPanel {
                     .addComponent(cmbClase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(tfFechaExpiracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLCosto))
                 .addContainerGap())
         );
 
@@ -360,9 +374,7 @@ public class EmitirLicencia extends javax.swing.JPanel {
     
     
     private java.sql.Date calcularFechaExpiracion(char clase, long idTitular) throws Exception{
-        //TODO: Hacer el método
         java.sql.Date fecha = GestorLicencia.calcularFechaExpiracion(clase,idTitular);
-        //fechaActual.setYear(fechaActual.getYear() + 1);
         return fecha;
     }
     
@@ -380,6 +392,8 @@ public class EmitirLicencia extends javax.swing.JPanel {
                 Usuario usuLog = GestorUsuario.getUsuarioLogeado();
                 licencia = new Licencia(Long.parseLong("0"), idTitular, clase, fechaAct, fechaExpiracion, usuLog.getID(), idOriginal, esRenovacion);
                 tfFechaExpiracion.setText(dateFormat.format(fechaExpiracion));
+                costoLicencia = GestorCosto.calcularCosto(licencia, false);
+                jLCosto.setText(costoLicencia.toString());
             }
             catch(Exception ex){
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -403,6 +417,8 @@ public class EmitirLicencia extends javax.swing.JPanel {
             String fechaActual = dateFormat.format(new java.util.Date());
             java.sql.Date fechaExpiracion = calcularFechaExpiracion(((String)cmbClase.getSelectedItem()).charAt(0), Long.parseLong(tfIdTitular.getText()));
             tfFechaExpiracion.setText(dateFormat.format(fechaExpiracion));
+            costoLicencia = GestorCosto.calcularCosto(licencia, false);
+            jLCosto.setText(costoLicencia.toString());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -429,6 +445,8 @@ public class EmitirLicencia extends javax.swing.JPanel {
                     tfDocumento.setText(titu.getNumeroDocumento().toString());
                     tfFechaExpiracion.setText(dateFormat.format(fechaExpiracion));
                     cmbTipoDocumento.setSelectedItem(titu.getTipoDocumento());
+                    costoLicencia = GestorCosto.calcularCosto(licencia, false);
+                    jLCosto.setText(costoLicencia.toString());
                 }
                 else{
                     throw new Exception("No existe un usuario con la id ingresada.");
@@ -440,6 +458,8 @@ public class EmitirLicencia extends javax.swing.JPanel {
                 tfApellido.setText("");
                 tfDocumento.setText("");
                 tfFechaExpiracion.setText("");
+                costoLicencia = new Long(0);
+                jLCosto.setText(costoLicencia.toString());
             }
         }
         else{
@@ -448,6 +468,8 @@ public class EmitirLicencia extends javax.swing.JPanel {
                 tfApellido.setText("");
                 tfDocumento.setText("");
                 tfFechaExpiracion.setText("");
+                costoLicencia = new Long(0);
+                jLCosto.setText(costoLicencia.toString());
             }
         }
     }//GEN-LAST:event_tfIdTitularKeyReleased
@@ -470,8 +492,10 @@ public class EmitirLicencia extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmbTipoDocumento;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLCosto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

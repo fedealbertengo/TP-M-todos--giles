@@ -15,7 +15,15 @@ import CEntidades.Licencia;
  */
 public class GestorCosto {
     
-    public static Costo getCostoLicencia(Licencia lic) throws Exception{
-        return CostoDB.getCostoLicencia(lic).get(0);
+    public static Long calcularCosto(Licencia lic, boolean esCopia) throws Exception{
+        Long costoAdministrativo = new Long(8);
+        Long costoCopia = new Long(50);
+        
+        if(esCopia){
+            return costoCopia;
+        }else{
+            Costo c = CostoDB.getCostoLicencia(lic).get(0);
+            return ((Double) c.getCosto()).longValue() + costoAdministrativo;
+        } 
     }
 }

@@ -35,14 +35,15 @@ public class LicenciaDB {
     }
     
     public static void altaLicencia(Licencia lic) throws Exception{
+        
         try{
-            String query = "INSERT INTO Titular (IdTitular, Clase, FechaEmision, FechaExpiracion, IdUsuario, IdOriginal) VALUES (" + 
+            String query = "INSERT INTO Licencia (IdTitular, Clase, FechaEmision, FechaExpiracion, IdUsuario, IdOriginal) VALUES (" + 
                     lic.IdTitular + ", " +
                     "'" + lic.Clase + "'" + ", " +
                     "'" + lic.FechaEmision + "'" + ", " +
                     "'" + lic.FechaExpiracion + "'" + ", " +
                     lic.IdUsuario + ", " +
-                    lic.IdOriginal +
+                    ((lic.IdOriginal.intValue() == -1)? "NULL" : lic.IdOriginal) +
                     ")";
             Conexion.ejecutarSentencia(query);
         }
