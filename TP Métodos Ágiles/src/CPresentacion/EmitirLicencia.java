@@ -17,6 +17,7 @@ import java.awt.Dimension;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -337,6 +338,7 @@ public class EmitirLicencia extends javax.swing.JPanel {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         try {
             if(licencia != null){
+                //validar
                GestorLicencia.altaLicencia(licencia);
             }
             else{
@@ -356,15 +358,12 @@ public class EmitirLicencia extends javax.swing.JPanel {
         return true;
     }
     
-    private Long obtenerIdOriginal(long idTitular){
-        //TODO: Hacer el método
-        return null;
-    }
     
-    private Date calcularFechaExpiracion(char clase, long idTitular, Date fechaActual){
+    private java.sql.Date calcularFechaExpiracion(char clase, long idTitular) throws Exception{
         //TODO: Hacer el método
-        fechaActual.setYear(fechaActual.getYear() + 1);
-        return fechaActual;
+        java.sql.Date fecha = GestorLicencia.calcularFechaExpiracion(clase,idTitular);
+        //fechaActual.setYear(fechaActual.getYear() + 1);
+        return fecha;
     }
     
     private void cmbClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClaseActionPerformed
@@ -372,12 +371,12 @@ public class EmitirLicencia extends javax.swing.JPanel {
             try{
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 String fechaActual = dateFormat.format(new java.util.Date());
-                Date fechaExpiracion = calcularFechaExpiracion(((String)cmbClase.getSelectedItem()).charAt(0), Long.parseLong(tfIdTitular.getText()), Date.valueOf(fechaActual));
-                Long idOriginal = obtenerIdOriginal(Long.parseLong(tfIdTitular.getText()));
+                Long idOriginal = GestorLicencia.recuperarIdOriginal(Long.parseLong(tfIdTitular.getText()));
                 boolean esRenovacion = (idOriginal != null);
                 long idTitular = Long.parseLong(tfIdTitular.getText());
                 char clase = ((String)cmbClase.getSelectedItem()).charAt(0);
-                Date fechaAct = Date.valueOf(fechaActual);
+                java.sql.Date fechaExpiracion = calcularFechaExpiracion(((String)cmbClase.getSelectedItem()).charAt(0), Long.parseLong(tfIdTitular.getText()));
+                java.sql.Date fechaAct = java.sql.Date.valueOf(fechaActual);
                 Usuario usuLog = GestorUsuario.getUsuarioLogeado();
                 licencia = new Licencia(Long.parseLong("0"), idTitular, clase, fechaAct, fechaExpiracion, usuLog.getID(), idOriginal, esRenovacion);
                 tfFechaExpiracion.setText(dateFormat.format(fechaExpiracion));
@@ -402,7 +401,7 @@ public class EmitirLicencia extends javax.swing.JPanel {
             cmbTipoDocumento.setSelectedItem(titu.getTipoDocumento());
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             String fechaActual = dateFormat.format(new java.util.Date());
-            Date fechaExpiracion = calcularFechaExpiracion(((String)cmbClase.getSelectedItem()).charAt(0), Long.parseLong(tfIdTitular.getText()), Date.valueOf(fechaActual));
+            java.sql.Date fechaExpiracion = calcularFechaExpiracion(((String)cmbClase.getSelectedItem()).charAt(0), Long.parseLong(tfIdTitular.getText()));
             tfFechaExpiracion.setText(dateFormat.format(fechaExpiracion));
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -414,16 +413,17 @@ public class EmitirLicencia extends javax.swing.JPanel {
             try{
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 String fechaActual = dateFormat.format(new java.util.Date());
-                Date fechaExpiracion = calcularFechaExpiracion(((String)cmbClase.getSelectedItem()).charAt(0), Long.parseLong(tfIdTitular.getText()), Date.valueOf(fechaActual));
-                Long idOriginal = obtenerIdOriginal(Long.parseLong(tfIdTitular.getText()));
+                Long idOriginal = GestorLicencia.recuperarIdOriginal(Long.parseLong(tfIdTitular.getText()));
                 boolean esRenovacion = (idOriginal != null);
                 long idTitular = Long.parseLong(tfIdTitular.getText());
                 char clase = ((String)cmbClase.getSelectedItem()).charAt(0);
-                Date fechaAct = Date.valueOf(fechaActual);
+                java.sql.Date fechaAct = java.sql.Date.valueOf(fechaActual);
                 Usuario usuLog = GestorUsuario.getUsuarioLogeado();
                 Titular titu = GestorTitular.getTitular(idTitular);
                 if(titu != null){
+                    java.sql.Date fechaExpiracion = calcularFechaExpiracion(((String)cmbClase.getSelectedItem()).charAt(0), Long.parseLong(tfIdTitular.getText()));
                     licencia = new Licencia(Long.parseLong("0"), idTitular, clase, fechaAct, fechaExpiracion, usuLog.getID(), idOriginal, esRenovacion);
+                    
                     tfNombre.setText(titu.getNombre());
                     tfApellido.setText(titu.getApellido());
                     tfDocumento.setText(titu.getNumeroDocumento().toString());

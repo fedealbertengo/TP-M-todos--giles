@@ -50,4 +50,14 @@ public class LicenciaDB {
             throw ex;
         }
     }
+
+    public static Long getIdOriginal(Long id) throws Exception{
+        try{
+            ArrayList<Licencia> licencias = (ArrayList<Licencia>)(Object)Conexion.consultar("SELECT * FROM Licencia WHERE IdTitular = " + id +" AND IdOriginal = null", Licencia.class);
+            return (!licencias.isEmpty())? licencias.get(0).getIdTitular() : new Long(-1);
+        }
+        catch(Exception ex){
+            throw ex;
+        }
+    }
 }
