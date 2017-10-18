@@ -64,6 +64,15 @@ public class EmitirLicencia extends javax.swing.JPanel {
             }
         };
         jFrame.addWindowListener(wd);
+        //vaciar campos
+        /*tfIdTitular.setText("");
+        tfNombre.setText("");
+        tfApellido.setText("");
+        tfDocumento.setText("");
+        tfFechaExpiracion.setText("");
+        licencia = null;
+        costoLicencia = new Long(0);
+        jLCosto.setText(costoLicencia.toString());*/
     }
     
     @SuppressWarnings("unchecked")
@@ -353,10 +362,11 @@ public class EmitirLicencia extends javax.swing.JPanel {
         try {
             if(licencia != null){
                 //validar
+               GestorLicencia.validarLicencia(licencia); 
                GestorLicencia.altaLicencia(licencia);
             }
             else{
-                JOptionPane.showMessageDialog(null, "Los campos no están correctos.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Los campos no pueden estar vacios.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -368,7 +378,7 @@ public class EmitirLicencia extends javax.swing.JPanel {
     }//GEN-LAST:event_cmbClaseItemStateChanged
 
     private boolean validarCampos(){
-        //TODO: Hacer el método
+        //no es necesario.
         return true;
     }
     
@@ -458,6 +468,7 @@ public class EmitirLicencia extends javax.swing.JPanel {
                 tfApellido.setText("");
                 tfDocumento.setText("");
                 tfFechaExpiracion.setText("");
+                licencia = null;
                 costoLicencia = new Long(0);
                 jLCosto.setText(costoLicencia.toString());
             }
@@ -468,6 +479,7 @@ public class EmitirLicencia extends javax.swing.JPanel {
                 tfApellido.setText("");
                 tfDocumento.setText("");
                 tfFechaExpiracion.setText("");
+                licencia = null;
                 costoLicencia = new Long(0);
                 jLCosto.setText(costoLicencia.toString());
             }
