@@ -226,11 +226,6 @@ public class EmitirLicencia extends javax.swing.JPanel {
         panDetLic.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         cmbClase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "C", "E", "G" }));
-        cmbClase.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbClaseItemStateChanged(evt);
-            }
-        });
         cmbClase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbClaseActionPerformed(evt);
@@ -281,11 +276,6 @@ public class EmitirLicencia extends javax.swing.JPanel {
         );
 
         btnAceptar.setText("Aceptar");
-        btnAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAceptarMouseClicked(evt);
-            }
-        });
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);
@@ -353,10 +343,6 @@ public class EmitirLicencia extends javax.swing.JPanel {
         this.jFrame.repaint();
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void btnAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAceptarMouseClicked
-
     
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         try {
@@ -372,29 +358,19 @@ public class EmitirLicencia extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
-
-    private void cmbClaseItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbClaseItemStateChanged
-
-    }//GEN-LAST:event_cmbClaseItemStateChanged
-
-    private boolean validarCampos(){
-        //no es necesario.
-        return true;
-    }
-    
-    
+   
     private java.sql.Date calcularFechaExpiracion(char clase, long idTitular) throws Exception{
         java.sql.Date fecha = GestorLicencia.calcularFechaExpiracion(clase,idTitular);
         return fecha;
     }
     
     private void cmbClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClaseActionPerformed
-        if((!tfIdTitular.getText().equals("")) && validarCampos()){
+        if(!tfIdTitular.getText().equals("")){
             try{
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 String fechaActual = dateFormat.format(new java.util.Date());
                 Long idOriginal = GestorLicencia.recuperarIdOriginal(Long.parseLong(tfIdTitular.getText()));
-                boolean esRenovacion = (idOriginal != null);
+                boolean esRenovacion = (idOriginal != -1);
                 long idTitular = Long.parseLong(tfIdTitular.getText());
                 char clase = ((String)cmbClase.getSelectedItem()).charAt(0);
                 java.sql.Date fechaExpiracion = calcularFechaExpiracion(((String)cmbClase.getSelectedItem()).charAt(0), Long.parseLong(tfIdTitular.getText()));
@@ -435,7 +411,7 @@ public class EmitirLicencia extends javax.swing.JPanel {
     }
     
     private void tfIdTitularKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfIdTitularKeyReleased
-        if((!tfIdTitular.getText().equals("")) && validarCampos()){
+        if(!tfIdTitular.getText().equals("")){
             try{
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 String fechaActual = dateFormat.format(new java.util.Date());
