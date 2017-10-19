@@ -57,6 +57,7 @@ public class AltaTitular extends javax.swing.JPanel {
     
     public void configurarParamsJFrame(){
         jFrame.setSize((int)(this.getPreferredSize().getWidth() + 30), (int)(this.getPreferredSize().getHeight() + 50));
+       
         wd = new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent){
@@ -121,6 +122,7 @@ public class AltaTitular extends javax.swing.JPanel {
         jLabel5.setText("Fecha de Nacimiento");
 
         dateFechaNac.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-MM-yyyy"))));
+        dateFechaNac.setToolTipText("formato: dd/mm/aaaa");
         dateFechaNac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dateFechaNacActionPerformed(evt);
@@ -184,7 +186,7 @@ public class AltaTitular extends javax.swing.JPanel {
                                         .addComponent(jLabel2)
                                         .addGap(18, 18, 18)
                                         .addComponent(tfApellido)))
-                                .addGap(0, 1, Short.MAX_VALUE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(22, 22, 22))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -280,6 +282,7 @@ public class AltaTitular extends javax.swing.JPanel {
             try{
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 String fechaActual = dateFormat.format(new java.util.Date());
+            
                 String fechaNac = dateFechaNac.getText().split("-")[2] + "-" + dateFechaNac.getText().split("")[1] + "-" + dateFechaNac.getText().split("-")[0];
                 Titular tit = new Titular(tfNombre.getText(), tfApellido.getText(), (String)cmbTipoDocumento.getSelectedItem(), Long.parseLong(tfDocumento.getText()), Date.valueOf(fechaNac), tfDireccion.getText(), (String)cmbGrupoSang.getSelectedItem(), ((String)cmbFactorSang.getSelectedItem()).equals("+"), cbDonante.isSelected(), Date.valueOf(fechaActual), null, GestorUsuario.getUsuarioLogeado().getID());
                 GestorTitular.altaTitular(tit);
