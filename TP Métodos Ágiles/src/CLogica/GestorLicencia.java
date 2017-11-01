@@ -24,6 +24,7 @@ public class GestorLicencia {
             throw ex;
         }
     }
+    
     public static Long recuperarIdOriginal(Long id) throws Exception{
             
         try{
@@ -165,4 +166,7 @@ public class GestorLicencia {
         }
     }
     
+    public static boolean licenciaExpirada(Licencia lic){
+        return true;
+    }
 }
