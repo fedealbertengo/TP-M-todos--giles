@@ -1,5 +1,6 @@
 package CPresentacion;
 
+import CLogica.GestorLicencia;
 import CLogica.GestorUsuario;
 import javax.swing.JOptionPane;
 
@@ -157,7 +158,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MenuPrincipal().setVisible(true);
-             
+                try{
+                    GestorLicencia.generarReportaLicencia(GestorLicencia.getLicencia(2));
+                }
+                catch(Exception ex){
+                    System.out.println(ex.getMessage());
+                }
             }
         });
         

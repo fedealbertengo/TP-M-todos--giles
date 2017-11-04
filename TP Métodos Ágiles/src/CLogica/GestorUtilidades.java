@@ -7,19 +7,37 @@ package CLogica;
 
 import CEntidades.ConsultaGenerica;
 import java.lang.reflect.Field;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
 import java.util.Vector;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
  * @author fede_
  */
 public class GestorUtilidades {
-    
+    public static void generarReporte(String urlEntrada, String urlSalida, Map<String, Object> parametros) throws Exception{
+        JasperReport reporte = JasperCompileManager.compileReport(urlEntrada);
+        
+        JasperPrint impresion = JasperFillManager.fillReport(reporte, parametros);
+        
+        JasperExportManager.exportReportToPdfFile(impresion, urlSalida);
+        
+        JasperViewer.viewReport(impresion, false);
+
+    }
+            
     public static void llenarTabla(JTable tabla, ArrayList<Object> list) throws Exception{
         try{
             DefaultTableModel tableModel = new DefaultTableModel(){

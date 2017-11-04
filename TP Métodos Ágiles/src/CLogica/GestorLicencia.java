@@ -10,7 +10,9 @@ import java.time.Year;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.ListIterator;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -168,5 +170,27 @@ public class GestorLicencia {
     
     public static boolean licenciaExpirada(Licencia lic){
         return true;
+    }
+    
+    public static void generarReportaLicencia(Licencia lic) throws Exception{
+        Map<String, Object> parametros = new HashMap<String, Object>();
+        try{
+            parametros.put("NroLicencia", lic.getID());
+            parametros.put("Apellido", lic.getTitular().getApellido());
+            parametros.put("Nombre", lic.getTitular().getNombre());
+            parametros.put("FechaNacimiento", lic.getTitular().getFechaNacimiento());
+            parametros.put("Domicilio", lic.getTitular().getDireccion());
+            parametros.put("Nacionalidad", "Argentino");
+            parametros.put("Emision", "");
+            parametros.put("Sexo", "M");
+            parametros.put("Donante", lic.getTitular().isDonante());
+            parametros.put("GrupoSanguineo", lic.getTitular().getGrupoSanguineo());
+            parametros.put("FactorRH", (lic.getTitular().isFactorRH()) ? "+" : "-");
+            parametros.put("Clase", lic.Clase);
+            GestorUtilidades.generarReporte("Recursos/ReporteLicencia.jrxml", "Recursos/ReporteLicencia.pdf", parametros);   
+        }
+        catch(Exception ex){
+            throw ex;
+        }
     }
 }
