@@ -58,8 +58,9 @@ public class Titular {
         Donante = atributos[9].equals("1");
         FechaCreacion = Date.valueOf(atributos[10]);
         FechaBaja = (!atributos[11].equals("null")) ? Date.valueOf(atributos[11]) : null;
-        Nacionalidad = atributos[12];
-        Sexo = atributos[13].charAt(0);
+        IdUsuario = Long.parseLong(atributos[12]);
+        Nacionalidad = atributos[13];
+        Sexo = atributos[14].charAt(0);
     }
     
     public Long getID() {

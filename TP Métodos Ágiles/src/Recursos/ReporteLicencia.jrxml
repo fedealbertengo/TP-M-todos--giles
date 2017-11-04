@@ -8,7 +8,7 @@
 	<parameter name="FechaNacimiento" class="java.lang.String"/>
 	<parameter name="Domicilio" class="java.lang.String"/>
 	<parameter name="Nacionalidad" class="java.lang.String"/>
-	<parameter name="Emision" class="java.lang.String"/>
+	<parameter name="Validez" class="java.lang.String"/>
 	<parameter name="Sexo" class="java.lang.String"/>
 	<parameter name="Donante" class="java.lang.String"/>
 	<parameter name="GrupoSanguineo" class="java.lang.String"/>
@@ -57,7 +57,7 @@
 			</staticText>
 			<staticText>
 				<reportElement x="170" y="220" width="80" height="20" uuid="70606692-8956-423e-82b7-dbab4703a707"/>
-				<text><![CDATA[EMISION]]></text>
+				<text><![CDATA[VALIDEZ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="422" y="191" width="42" height="18" uuid="360664ac-de8f-4ae1-8f3a-f72a0ca545f5"/>
@@ -68,7 +68,7 @@
 				<text><![CDATA[DONANTE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="422" y="131" width="72" height="20" uuid="0e4aa1a8-a3ec-48ca-9a41-7ebff97e1f32"/>
+				<reportElement x="422" y="131" width="100" height="20" uuid="0e4aa1a8-a3ec-48ca-9a41-7ebff97e1f32"/>
 				<text><![CDATA[G. SANGUINEO]]></text>
 			</staticText>
 			<staticText>
@@ -92,7 +92,7 @@
 				<textFieldExpression><![CDATA[$P{FechaNacimiento}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement key="" x="260" y="165" width="100" height="20" uuid="e6f6528c-d3ef-4cec-a3c9-211afed1b381"/>
+				<reportElement key="" x="260" y="162" width="100" height="20" uuid="e6f6528c-d3ef-4cec-a3c9-211afed1b381"/>
 				<textFieldExpression><![CDATA[$P{Domicilio}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -101,10 +101,10 @@
 			</textField>
 			<textField>
 				<reportElement key="" x="260" y="220" width="260" height="20" uuid="fbb1c10b-d4b6-4ace-9ac8-ba6b649ef290"/>
-				<textFieldExpression><![CDATA[$P{Emision}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{Validez}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement key="" x="500" y="72" width="30" height="20" uuid="a987f127-0016-4459-9591-dd7a48ae50ab"/>
+				<reportElement key="" x="500" y="73" width="30" height="20" uuid="a987f127-0016-4459-9591-dd7a48ae50ab"/>
 				<textFieldExpression><![CDATA[$P{Sexo}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -112,11 +112,11 @@
 				<textFieldExpression><![CDATA[$P{Donante}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement key="" x="500" y="130" width="30" height="20" uuid="17b5c333-e426-423e-990f-30026768e37e"/>
+				<reportElement key="" x="500" y="131" width="30" height="20" uuid="17b5c333-e426-423e-990f-30026768e37e"/>
 				<textFieldExpression><![CDATA[$P{GrupoSanguineo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement key="" x="500" y="162" width="30" height="20" uuid="275138c8-25b3-4b26-ab1e-477cfac28a72"/>
+				<reportElement key="" x="500" y="158" width="30" height="20" uuid="275138c8-25b3-4b26-ab1e-477cfac28a72"/>
 				<textFieldExpression><![CDATA[$P{FactorRH}]]></textFieldExpression>
 			</textField>
 			<textField>
