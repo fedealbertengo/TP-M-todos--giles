@@ -4,6 +4,7 @@ import CDatos.Conexion;
 import CDatos.LicenciaDB;
 import CEntidades.Licencia;
 import CEntidades.Titular;
+import java.awt.Component;
 import java.time.LocalDate;
 import java.util.Date;
 import java.time.Year;
@@ -15,8 +16,11 @@ import java.util.ListIterator;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 
 public class GestorLicencia {
+    
+    static JFileChooser chooser;
     
     public static Licencia getLicencia(long idLic) throws Exception{
         try{
@@ -172,22 +176,30 @@ public class GestorLicencia {
         return true;
     }
     
-    public static void generarReportaLicencia(Licencia lic) throws Exception{
+    public static void generarReportaLicencia(Component ctx, Licencia lic) throws Exception{
         Map<String, Object> parametros = new HashMap<String, Object>();
         try{
-            parametros.put("NroLicencia", lic.getID());
-            parametros.put("Apellido", lic.getTitular().getApellido());
-            parametros.put("Nombre", lic.getTitular().getNombre());
-            parametros.put("FechaNacimiento", lic.getTitular().getFechaNacimiento());
-            parametros.put("Domicilio", lic.getTitular().getDireccion());
-            parametros.put("Nacionalidad", "Argentino");
-            parametros.put("Emision", "");
-            parametros.put("Sexo", "M");
-            parametros.put("Donante", lic.getTitular().isDonante());
-            parametros.put("GrupoSanguineo", lic.getTitular().getGrupoSanguineo());
-            parametros.put("FactorRH", (lic.getTitular().isFactorRH()) ? "+" : "-");
-            parametros.put("Clase", lic.Clase);
-            GestorUtilidades.generarReporte("Recursos/ReporteLicencia.jrxml", "Recursos/ReporteLicencia.pdf", parametros);   
+            chooser = new JFileChooser(); 
+            chooser.setCurrentDirectory(new java.io.File("."));
+            chooser.setDialogTitle("Seleccione el directorio del reporte");
+            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            chooser.setAcceptAllFileFilterUsed(false);
+            if(chooser.showOpenDialog(ctx) == JFileChooser.APPROVE_OPTION) { 
+                parametros.put("NroLicencia", lic.getID());
+                parametros.put("Apellido", lic.getTitular().getApellido());
+                parametros.put("Nombre", lic.getTitular().getNombre());
+                parametros.put("FechaNacimiento", lic.getTitular().getFechaNacimiento().toString());
+                parametros.put("Domicilio", lic.getTitular().getDireccion());
+                parametros.put("Nacionalidad", lic.getTitular().getNacionalidad());
+                parametros.put("Emision", "");
+                parametros.put("Sexo", (lic.getTitular().getSexo()).toString());
+                parametros.put("Donante", (lic.getTitular().isDonante()) ? "Si" : "No");
+                parametros.put("GrupoSanguineo", lic.getTitular().getGrupoSanguineo());
+                parametros.put("FactorRH", (lic.getTitular().isFactorRH()) ? "+" : "-");
+                parametros.put("Clase", lic.getClase().toString());
+                parametros.put("REPORTS_DIR", chooser.getSelectedFile().getAbsolutePath());
+                GestorUtilidades.generarReporte(chooser.getSelectedFile().getAbsolutePath() + "\\ReporteLicencia.jrxml", chooser.getSelectedFile().getAbsolutePath() + "\\ReporteLicencia.pdf", parametros);
+            }   
         }
         catch(Exception ex){
             throw ex;

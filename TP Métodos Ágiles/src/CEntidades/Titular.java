@@ -20,12 +20,14 @@ public class Titular {
     public Date FechaCreacion;
     public Date FechaBaja;
     public Long IdUsuario;
+    public String Nacionalidad;
+    public char Sexo;
     
     public Titular(){
         
     }
     
-    public Titular(String nom, String ape, String tipodoc, Long nrodoc, Date fechanac, String direc, String gruposang, boolean factrh, boolean dona, Date fechacre, Date fechabaj, Long idusu){
+    public Titular(String nom, String ape, String tipodoc, Long nrodoc, Date fechanac, String direc, String gruposang, boolean factrh, boolean dona, Date fechacre, Date fechabaj, Long idusu, String nacional, char sex){
         Apellido = ape;
         Nombre = nom;
         TipoDocumento = tipodoc;
@@ -38,6 +40,8 @@ public class Titular {
         FechaCreacion = fechacre;
         FechaBaja = fechabaj;
         IdUsuario = idusu;
+        Nacionalidad = nacional;
+        Sexo = sex;
     }
     
     public Titular(String obj){
@@ -54,6 +58,8 @@ public class Titular {
         Donante = atributos[9].equals("1");
         FechaCreacion = Date.valueOf(atributos[10]);
         FechaBaja = (!atributos[11].equals("null")) ? Date.valueOf(atributos[11]) : null;
+        Nacionalidad = atributos[12];
+        Sexo = atributos[13].charAt(0);
     }
     
     public Long getID() {
@@ -177,4 +183,22 @@ public class Titular {
             throw ex;
         }
     }
+
+    public String getNacionalidad() {
+        return Nacionalidad;
+    }
+
+    public void setNacionalidad(String Nacionalidad) {
+        this.Nacionalidad = Nacionalidad;
+    }
+
+    public Character getSexo() {
+        return Sexo;
+    }
+
+    public void setSexo(char Sexo) {
+        this.Sexo = Sexo;
+    }
+    
+    
 }

@@ -134,4 +134,14 @@ public class Licencia {
             throw ex;
         }
     }
+
+    public Character getClase() {
+        return Clase;
+    }
+
+    public void setClase(char Clase) {
+        this.Clase = Clase;
+    }
+    
+    
 }

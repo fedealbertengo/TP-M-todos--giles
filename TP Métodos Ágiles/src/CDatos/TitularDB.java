@@ -18,7 +18,7 @@ public class TitularDB {
 
     public static void altaTitular(Titular tit) throws Exception {
         try{
-            String query = "INSERT INTO Titular (Apellido, Nombre, TipoDocumento, NumeroDocumento, FechaNacimiento, Direccion, GrupoSanguineo, FactorRH, Donante, FechaCreacion, FechaBaja, IdUsuario) VALUES (" + 
+            String query = "INSERT INTO Titular (Apellido, Nombre, TipoDocumento, NumeroDocumento, FechaNacimiento, Direccion, GrupoSanguineo, FactorRH, Donante, FechaCreacion, FechaBaja, IdUsuario, Nacionalidad, Sexo) VALUES (" + 
                     "'" + tit.Apellido + "'" + ", " +
                     "'" + tit.Nombre + "'" + ", " +
                     "'" + tit.TipoDocumento + "'" + ", " +
@@ -30,7 +30,9 @@ public class TitularDB {
                     (tit.Donante ? 1 : 0) + ", " +
                     "'" + tit.FechaCreacion + "'" + ", " +
                     "NULL" + ", " +
-                     tit.IdUsuario +
+                    tit.IdUsuario + ", " + 
+                    tit.Nacionalidad + ", " +
+                    tit.Sexo +
                     ")";
             Conexion.ejecutarSentencia(query);
         }

@@ -90,6 +90,10 @@ public class AltaTitular extends javax.swing.JPanel {
         cmbFactorSang = new javax.swing.JComboBox<>();
         cbDonante = new javax.swing.JCheckBox();
         btnAceptar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        tfNacionalidad = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        cmbSexo = new javax.swing.JComboBox<>();
 
         jTextField4.setText("jTextField4");
 
@@ -153,6 +157,17 @@ public class AltaTitular extends javax.swing.JPanel {
             }
         });
 
+        jLabel6.setText("Nacionalidad");
+
+        jLabel9.setText("Sexo");
+
+        cmbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "F" }));
+        cmbSexo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSexoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -160,13 +175,41 @@ public class AltaTitular extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnVolver, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cmbGrupoSang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel8))
+                                    .addComponent(cbDonante))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmbFactorSang, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnAceptar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tfNacionalidad))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(tfDireccion))
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel5)
@@ -186,32 +229,13 @@ public class AltaTitular extends javax.swing.JPanel {
                                         .addComponent(jLabel2)
                                         .addGap(18, 18, 18)
                                         .addComponent(tfApellido)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(22, 22, 22))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnVolver)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnAceptar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cmbGrupoSang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel8))
-                                    .addComponent(cbDonante))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmbFactorSang, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGap(0, 1, Short.MAX_VALUE)))
+                        .addGap(22, 22, 22))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -241,10 +265,18 @@ public class AltaTitular extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(cbDonante)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAceptar)
-                    .addComponent(btnVolver))
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(tfNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(cmbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVolver)
+                    .addComponent(btnAceptar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -278,13 +310,13 @@ public class AltaTitular extends javax.swing.JPanel {
     }//GEN-LAST:event_cmbGrupoSangActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        if((!tfNombre.getText().equals("")) && (!tfApellido.getText().equals("")) && (!tfDocumento.getText().equals("")) && (!dateFechaNac.getText().equals("")) && (!tfDireccion.getText().equals(""))){
+        if((!tfNombre.getText().equals("")) && (!tfApellido.getText().equals("")) && (!tfDocumento.getText().equals("")) && (!dateFechaNac.getText().equals("")) && (!tfDireccion.getText().equals("")) && (!tfNacionalidad.getText().equals(""))){
             try{
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 String fechaActual = dateFormat.format(new java.util.Date());
             
                 String fechaNac = dateFechaNac.getText().split("-")[2] + "-" + dateFechaNac.getText().split("")[1] + "-" + dateFechaNac.getText().split("-")[0];
-                Titular tit = new Titular(tfNombre.getText(), tfApellido.getText(), (String)cmbTipoDocumento.getSelectedItem(), Long.parseLong(tfDocumento.getText()), Date.valueOf(fechaNac), tfDireccion.getText(), (String)cmbGrupoSang.getSelectedItem(), ((String)cmbFactorSang.getSelectedItem()).equals("+"), cbDonante.isSelected(), Date.valueOf(fechaActual), null, GestorUsuario.getUsuarioLogeado().getID());
+                Titular tit = new Titular(tfNombre.getText(), tfApellido.getText(), (String)cmbTipoDocumento.getSelectedItem(), Long.parseLong(tfDocumento.getText()), Date.valueOf(fechaNac), tfDireccion.getText(), (String)cmbGrupoSang.getSelectedItem(), ((String)cmbFactorSang.getSelectedItem()).equals("+"), cbDonante.isSelected(), Date.valueOf(fechaActual), null, GestorUsuario.getUsuarioLogeado().getID(), tfNacionalidad.getText(), (Character)cmbSexo.getSelectedItem());
                 GestorTitular.altaTitular(tit);
                 if(llamadoPorOtro){
                     this.idTitularCreado = (((ArrayList<Titular>)((Object)Conexion.consultar("SELECT * FROM Titular WHERE TipoDocumento = '" + (String)cmbTipoDocumento.getSelectedItem() + "' AND NumeroDocumento = " + tfDocumento.getText(), Titular.class))).get(0)).getID();
@@ -316,12 +348,18 @@ public class AltaTitular extends javax.swing.JPanel {
             if(tfDireccion.getText().equals("")){
                 mensaje += "\nDireccion";
             }
-            
+            if(tfNacionalidad.getText().equals("")){
+                mensaje += "\nNacionalidad";
+            }
             if(mensaje.contains("\n")){
                 JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void cmbSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSexoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbSexoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -330,6 +368,7 @@ public class AltaTitular extends javax.swing.JPanel {
     private javax.swing.JCheckBox cbDonante;
     private javax.swing.JComboBox<String> cmbFactorSang;
     private javax.swing.JComboBox<String> cmbGrupoSang;
+    private javax.swing.JComboBox<String> cmbSexo;
     private javax.swing.JComboBox<String> cmbTipoDocumento;
     private javax.swing.JFormattedTextField dateFechaNac;
     private javax.swing.JLabel jLabel1;
@@ -337,12 +376,15 @@ public class AltaTitular extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField tfApellido;
     private javax.swing.JTextField tfDireccion;
     private javax.swing.JTextField tfDocumento;
+    private javax.swing.JTextField tfNacionalidad;
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
 }

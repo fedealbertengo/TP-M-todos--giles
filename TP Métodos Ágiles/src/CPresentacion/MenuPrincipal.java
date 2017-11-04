@@ -19,6 +19,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         };
         this.addWindowListener(wd);
+        
+        try{
+            GestorLicencia.generarReportaLicencia(this, GestorLicencia.getLicencia(2));
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
     /**
@@ -158,12 +165,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MenuPrincipal().setVisible(true);
-                try{
-                    GestorLicencia.generarReportaLicencia(GestorLicencia.getLicencia(2));
-                }
-                catch(Exception ex){
-                    System.out.println(ex.getMessage());
-                }
             }
         });
         

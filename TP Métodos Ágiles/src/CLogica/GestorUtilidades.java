@@ -5,6 +5,7 @@
  */
 package CLogica;
 
+import CDatos.Conexion;
 import CEntidades.ConsultaGenerica;
 import java.lang.reflect.Field;
 import java.sql.Connection;
@@ -15,6 +16,8 @@ import java.util.Map;
 import java.util.Vector;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -30,7 +33,9 @@ public class GestorUtilidades {
     public static void generarReporte(String urlEntrada, String urlSalida, Map<String, Object> parametros) throws Exception{
         JasperReport reporte = JasperCompileManager.compileReport(urlEntrada);
         
-        JasperPrint impresion = JasperFillManager.fillReport(reporte, parametros);
+        JRDataSource dataSource = new JREmptyDataSource();
+        
+        JasperPrint impresion = (JasperPrint) JasperFillManager.fillReport(reporte, parametros, dataSource);
         
         JasperExportManager.exportReportToPdfFile(impresion, urlSalida);
         
