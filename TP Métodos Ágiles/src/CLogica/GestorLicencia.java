@@ -184,7 +184,7 @@ public class GestorLicencia {
             String projectPath = System.getProperty("user.dir");
             chooser = new JFileChooser(); 
             chooser.setCurrentDirectory(new java.io.File("."));
-            chooser.setDialogTitle("Seleccione el directorio del reporte");
+            chooser.setDialogTitle("Seleccione donde quiere guardar el reporte");
             chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             chooser.setAcceptAllFileFilterUsed(false);
             if(chooser.showOpenDialog(ctx) == JFileChooser.APPROVE_OPTION) { 
