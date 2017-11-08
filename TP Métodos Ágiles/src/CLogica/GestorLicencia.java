@@ -14,6 +14,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 import java.util.logging.Level;
@@ -174,8 +175,56 @@ public class GestorLicencia {
         }
     }
     
+    public static List<Licencia> getLicencias(String query) throws Exception{
+        try{
+            return LicenciaDB.getLicencias(query);
+        }
+        catch(Exception ex){
+            throw ex;
+        }
+    }
+    
     public static boolean licenciaExpirada(Licencia lic){
-        return true;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String fechaActual = dateFormat.format(new java.util.Date());
+        java.sql.Date fechaAct = java.sql.Date.valueOf(fechaActual);
+        return (fechaAct.after(lic.getFechaExpiracion()));
+    }
+    
+    public static List<Licencia> getLicenciasExpiradas(String nroLicencia, String nombre, String apellido, String fechaEmisionIni, String fechaEmisionFin, String fechaExpiracionIni, String fechaExpiracionFin) throws Exception{
+        try{
+            List<Licencia> ls = new ArrayList<Licencia>();
+            String query = "SELECT L.* FROM Licencia L INNER JOIN Titular T ON L.IdTitular = T.ID";
+            if(!nroLicencia.equals("") || !nombre.equals("") || !apellido.equals("") || !fechaEmisionIni.equals("") || !fechaEmisionFin.equals("") || !fechaExpiracionIni.equals("") || !fechaExpiracionFin.equals("")){
+                query += " WHERE ";
+                if(!nroLicencia.equals("")){
+                    query += " L.ID = " + nroLicencia + " AND ";
+                }
+                if(!nombre.equals("")){
+                    query += " T.Nombre LIKE '%" + nombre + "%' AND ";
+                }
+                if(!apellido.equals("")){
+                    query += " T.Apellido LIKE '%" + apellido + "%' AND ";
+                }
+                if(!fechaEmisionIni.equals("") && !fechaEmisionFin.equals("")){
+                    query += " L.FechaEmision >= '" + fechaEmisionIni + "' AND L.FechaEmision <= '" + fechaEmisionFin + "' AND ";
+                }
+                if(!fechaExpiracionIni.equals("") && !fechaExpiracionFin.equals("")){
+                    query += " L.FechaEmision >= '" + fechaExpiracionIni + "' AND L.FechaEmision <= '" + fechaExpiracionFin + "' AND ";
+                }
+                query = query.substring(0, query.lastIndexOf(" AND "));
+            }
+            query += ";";
+            for(Licencia lic: getLicencias(query)){
+                if(licenciaExpirada(lic)){
+                    ls.add(lic);
+                }
+            }
+            return ls;
+        }
+        catch(Exception ex){
+            throw ex;
+        }
     }
     
     public static void generarReportaLicencia(Component ctx, Licencia lic) throws Exception{

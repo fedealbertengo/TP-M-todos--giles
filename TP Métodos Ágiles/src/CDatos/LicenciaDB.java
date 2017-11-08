@@ -2,8 +2,19 @@ package CDatos;
 
 import CEntidades.Licencia;
 import java.util.ArrayList;
+import java.util.List;
 
 public class LicenciaDB {
+    
+    public static List<Licencia> getLicencias(String query) throws Exception{
+        try{
+            ArrayList<Licencia> ls = (ArrayList<Licencia>)((Object)Conexion.consultar(query, Licencia.class));
+            return ls;
+        }
+        catch(Exception ex){
+            throw ex;
+        }
+    }
     
     public static Licencia getLicencia(long idLic) throws Exception{
         try{

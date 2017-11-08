@@ -41,6 +41,7 @@ public class MenuLicencias extends javax.swing.JPanel {
 
         btnEmitirLicencia = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
+        btnEmitirLicencia1 = new javax.swing.JButton();
 
         btnEmitirLicencia.setText("Emitir Licencia");
         btnEmitirLicencia.addActionListener(new java.awt.event.ActionListener() {
@@ -56,6 +57,13 @@ public class MenuLicencias extends javax.swing.JPanel {
             }
         });
 
+        btnEmitirLicencia1.setText("Ver Licencias Expiradas");
+        btnEmitirLicencia1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmitirLicencia1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -63,19 +71,24 @@ public class MenuLicencias extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnVolver))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(94, 94, 94)
                         .addComponent(btnEmitirLicencia))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnVolver)))
-                .addContainerGap(113, Short.MAX_VALUE))
+                        .addGap(72, 72, 72)
+                        .addComponent(btnEmitirLicencia1)))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(btnEmitirLicencia)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnEmitirLicencia1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
                 .addComponent(btnVolver)
                 .addContainerGap())
         );
@@ -104,9 +117,20 @@ public class MenuLicencias extends javax.swing.JPanel {
         volver();
     }//GEN-LAST:event_btnVolverMouseClicked
 
+    private void btnEmitirLicencia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmitirLicencia1ActionPerformed
+        this.jFrame.removeWindowListener(wd);
+        FiltrarLicencia menu = new FiltrarLicencia(this.jFrame, this.jFrame.getContentPane(), this.jFrame.getTitle(), this.jFrame.size(), this.jFrame.isResizable(), this.wd);
+        this.jFrame.setContentPane(menu);
+        this.jFrame.setTitle("Emitir Licencia");
+        this.jFrame.invalidate();
+        this.jFrame.validate();
+        this.jFrame.repaint();
+    }//GEN-LAST:event_btnEmitirLicencia1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEmitirLicencia;
+    private javax.swing.JButton btnEmitirLicencia1;
     private javax.swing.JButton btnVolver;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,11 +7,15 @@ package CLogica;
 
 import CDatos.Conexion;
 import CEntidades.ConsultaGenerica;
+import CEntidades.Licencia;
 import java.lang.reflect.Field;
 import java.sql.Connection;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 import javax.swing.JTable;
@@ -89,6 +93,45 @@ public class GestorUtilidades {
             throw ex;
         }
     }
+    
+    public static void llenarTablaLicenciasExpiradas(JTable tabla, List<Licencia> list) throws Exception{
+        try{
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            DefaultTableModel tableModel = new DefaultTableModel(){
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    //all cells false
+                    return false;
+                 }
+            };
+            tabla.setModel(tableModel);
+            if(list.size() > 0){
+                tableModel.addColumn("Nro");
+                tableModel.addColumn("Nombre");
+                tableModel.addColumn("Apellido");
+                tableModel.addColumn("Clase");
+                tableModel.addColumn("Fecha de Emision");
+                tableModel.addColumn("Fecha de Expiracion");
+                tableModel.addColumn("Original");
+                for(Licencia lic: list){
+                    Vector<Object> rowData = new Vector<Object>();
+                    rowData.add(lic.getID());
+                    rowData.add(lic.getTitular().getNombre());
+                    rowData.add(lic.getTitular().getApellido());
+                    rowData.add(lic.getClase());
+                    rowData.add(dateFormat.format(lic.getFechaEmision()));
+                    rowData.add(dateFormat.format(lic.getFechaExpiracion()));
+                    rowData.add(!lic.isEsRenovacion());
+                    tableModel.addRow(rowData);
+                }
+            }
+        }
+        catch(Exception ex){
+            throw ex;
+        }
+    }
+    
+    
     public static Long getAge(Date dateOfBirth) {
 
     Calendar today = Calendar.getInstance();
