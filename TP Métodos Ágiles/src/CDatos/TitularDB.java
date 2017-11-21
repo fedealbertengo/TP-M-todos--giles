@@ -31,8 +31,8 @@ public class TitularDB {
                     "'" + tit.FechaCreacion + "'" + ", " +
                     "NULL" + ", " +
                     tit.IdUsuario + ", " + 
-                    tit.Nacionalidad + ", " +
-                    tit.Sexo +
+                    "'" + tit.Nacionalidad + "'" + ", " +
+                    "'" + tit.Sexo + "'" +
                     ")";
             Conexion.ejecutarSentencia(query);
         }
