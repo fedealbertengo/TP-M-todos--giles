@@ -178,7 +178,7 @@ public class AltaTitular extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -229,7 +229,7 @@ public class AltaTitular extends javax.swing.JPanel {
                                         .addComponent(jLabel2)
                                         .addGap(18, 18, 18)
                                         .addComponent(tfApellido)))
-                                .addGap(0, 1, Short.MAX_VALUE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(22, 22, 22))))
         );
         layout.setVerticalGroup(
@@ -316,7 +316,7 @@ public class AltaTitular extends javax.swing.JPanel {
                 String fechaActual = dateFormat.format(new java.util.Date());
             
                 String fechaNac = dateFechaNac.getText().split("-")[2] + "-" + dateFechaNac.getText().split("")[1] + "-" + dateFechaNac.getText().split("-")[0];
-                Titular tit = new Titular(tfNombre.getText(), tfApellido.getText(), (String)cmbTipoDocumento.getSelectedItem(), Long.parseLong(tfDocumento.getText()), Date.valueOf(fechaNac), tfDireccion.getText(), (String)cmbGrupoSang.getSelectedItem(), ((String)cmbFactorSang.getSelectedItem()).equals("+"), cbDonante.isSelected(), Date.valueOf(fechaActual), null, GestorUsuario.getUsuarioLogeado().getID(), tfNacionalidad.getText(), (Character)cmbSexo.getSelectedItem());
+                Titular tit = new Titular(tfNombre.getText(), tfApellido.getText(), (String)cmbTipoDocumento.getSelectedItem(), Long.parseLong(tfDocumento.getText()), Date.valueOf(fechaNac), tfDireccion.getText(), (String)cmbGrupoSang.getSelectedItem(), ((String)cmbFactorSang.getSelectedItem()).equals("+"), cbDonante.isSelected(), Date.valueOf(fechaActual), null, GestorUsuario.getUsuarioLogeado().getID(), tfNacionalidad.getText(), ((String)cmbSexo.getSelectedItem()).charAt(0));
                 GestorTitular.altaTitular(tit);
                 if(llamadoPorOtro){
                     this.idTitularCreado = (((ArrayList<Titular>)((Object)Conexion.consultar("SELECT * FROM Titular WHERE TipoDocumento = '" + (String)cmbTipoDocumento.getSelectedItem() + "' AND NumeroDocumento = " + tfDocumento.getText(), Titular.class))).get(0)).getID();

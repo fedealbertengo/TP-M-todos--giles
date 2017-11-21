@@ -22,6 +22,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -35,6 +36,7 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class GestorUtilidades {
     public static void generarReporte(String urlEntrada, String urlSalida, Map<String, Object> parametros) throws Exception{
+    try{    
         JasperReport reporte = JasperCompileManager.compileReport(urlEntrada);
         
         JRDataSource dataSource = new JREmptyDataSource();
@@ -44,6 +46,9 @@ public class GestorUtilidades {
         JasperExportManager.exportReportToPdfFile(impresion, urlSalida);
         
         JasperViewer.viewReport(impresion, false);
+    }catch(JRException ex){
+        throw new Exception("No pudo generarse el reporte");
+    }
 
     }
             

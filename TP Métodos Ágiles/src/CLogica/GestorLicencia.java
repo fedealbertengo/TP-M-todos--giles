@@ -251,7 +251,38 @@ public class GestorLicencia {
                 parametros.put("FactorRH", (lic.getTitular().isFactorRH()) ? "+" : "-");
                 parametros.put("Clase", lic.getClase().toString());
                 parametros.put("REPORTS_DIR", projectPath + "\\src\\Recursos");
+                //parametros.put("REPORTS_DIR", "/Users/admin/Documents/agiles/TP-M-todos--giles/TP Métodos Ágiles/src/Recursos");
                 GestorUtilidades.generarReporte(projectPath + "\\src\\Recursos\\ReporteLicencia.jrxml", chooser.getSelectedFile().getAbsolutePath() + "\\Licencia" + lic.getTitular().getApellido() + lic.getTitular().getNombre() + ".pdf", parametros);
+                //GestorUtilidades.generarReporte("/Users/admin/Documents/agiles/TP-M-todos--giles/TP Métodos Ágiles/src/Recursos/ReporteLicencia.jrxml", chooser.getSelectedFile().getAbsolutePath() + "/Licencia" + lic.getTitular().getApellido() + lic.getTitular().getNombre() + ".pdf", parametros);
+
+            }   
+        }
+        catch(Exception ex){
+            throw ex;
+        }
+    }
+    public static void generarComprobante(Component ctx, Licencia lic, Double precio) throws Exception{
+        Map<String, Object> parametros = new HashMap<String, Object>();
+        try{
+            String projectPath = System.getProperty("user.dir");
+            chooser = new JFileChooser(); 
+            chooser.setCurrentDirectory(new java.io.File("."));
+            chooser.setDialogTitle("Seleccione donde quiere guardar el comprobante");
+            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            chooser.setAcceptAllFileFilterUsed(false);
+            if(chooser.showOpenDialog(ctx) == JFileChooser.APPROVE_OPTION) { 
+                parametros.put("Apellido", lic.getTitular().getApellido());
+                parametros.put("Nombre", lic.getTitular().getNombre());
+                parametros.put("Direccion", lic.getTitular().getDireccion());
+                parametros.put("Nacionalidad", lic.getTitular().getNacionalidad());
+                parametros.put("Sexo", (lic.getTitular().getSexo()).toString());
+                parametros.put("TipoLicencia", lic.getClase().toString());
+                parametros.put("TipoDoc", lic.getTitular().TipoDocumento);
+                parametros.put("Documento", lic.getClase().toString());
+                parametros.put("Precio", precio);
+
+                parametros.put("REPORTS_DIR", projectPath + "\\src\\Recursos");
+                GestorUtilidades.generarReporte(projectPath + "\\src\\Recursos\\Comprobante.jrxml", chooser.getSelectedFile().getAbsolutePath() + "\\Licencia" + lic.getTitular().getApellido() + lic.getTitular().getNombre() + ".pdf", parametros);
             }   
         }
         catch(Exception ex){
