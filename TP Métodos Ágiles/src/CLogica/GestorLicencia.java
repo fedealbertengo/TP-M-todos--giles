@@ -210,7 +210,7 @@ public class GestorLicencia {
                     query += " L.FechaEmision >= '" + fechaEmisionIni + "' AND L.FechaEmision <= '" + fechaEmisionFin + "' AND ";
                 }
                 if(!fechaExpiracionIni.equals("") && !fechaExpiracionFin.equals("")){
-                    query += " L.FechaEmision >= '" + fechaExpiracionIni + "' AND L.FechaEmision <= '" + fechaExpiracionFin + "' AND ";
+                    query += " L.FechaExpiracion >= '" + fechaExpiracionIni + "' AND L.FechaExpiracion <= '" + fechaExpiracionFin + "' AND ";
                 }
                 query = query.substring(0, query.lastIndexOf(" AND "));
             }
