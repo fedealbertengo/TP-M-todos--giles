@@ -51,7 +51,7 @@ public class PruebaCosto {
         java.sql.Date fechaAct = java.sql.Date.valueOf(fechaActual);
         java.sql.Date fechaExp = java.sql.Date.valueOf(fechaExpiracion);
         Licencia lic = new Licencia(new Long(0), new Long(1), 'A', fechaAct, fechaExp, new Long(1), null, false);
-        assertEquals("", new ArrayList<Costo>(), CostoDB.getCostoLicencia(lic));
+        assertEquals("", 1, CostoDB.getCostoLicencia(lic).size());
     }
     
     @Test

@@ -2,6 +2,8 @@ package CPresentacion;
 
 import CLogica.GestorLicencia;
 import CLogica.GestorUsuario;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class MenuPrincipal extends javax.swing.JFrame {
