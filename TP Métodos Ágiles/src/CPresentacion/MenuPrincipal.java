@@ -21,12 +21,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         };
         this.addWindowListener(wd);
-        
-        try {
-            GestorLicencia.generarComprobante(this, GestorLicencia.getLicencia(2), 48.0);
-        } catch (Exception ex) {
-            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     /**
