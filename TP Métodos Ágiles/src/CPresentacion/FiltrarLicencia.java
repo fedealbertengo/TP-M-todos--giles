@@ -104,8 +104,12 @@ public class FiltrarLicencia extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabLicencias = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(0, 0, 0));
+
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        btnFiltrar.setForeground(new java.awt.Color(0, 51, 244));
         btnFiltrar.setText("Filtrar");
         btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,8 +117,10 @@ public class FiltrarLicencia extends javax.swing.JPanel {
             }
         });
 
+        panTitular.setBackground(new java.awt.Color(0, 0, 0));
         panTitular.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jLabel6.setForeground(new java.awt.Color(0, 51, 244));
         jLabel6.setText("Nombre");
 
         tfNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -123,8 +129,10 @@ public class FiltrarLicencia extends javax.swing.JPanel {
             }
         });
 
+        jLabel7.setForeground(new java.awt.Color(0, 51, 244));
         jLabel7.setText("Apellido");
 
+        jLabel8.setForeground(new java.awt.Color(0, 51, 244));
         jLabel8.setText("Nro de Licencia");
 
         ftfFechaEmisionIni.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
@@ -136,18 +144,24 @@ public class FiltrarLicencia extends javax.swing.JPanel {
 
         ftfFechaEmisionFin.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
 
+        jLabel1.setForeground(new java.awt.Color(0, 51, 244));
         jLabel1.setText("Fecha Emision");
 
+        jLabel2.setForeground(new java.awt.Color(0, 51, 244));
         jLabel2.setText("Desde:");
 
+        jLabel3.setForeground(new java.awt.Color(0, 51, 244));
         jLabel3.setText("Hasta:");
 
+        jLabel4.setForeground(new java.awt.Color(0, 51, 244));
         jLabel4.setText("Fecha Expiracion");
 
+        jLabel5.setForeground(new java.awt.Color(0, 51, 244));
         jLabel5.setText("Desde:");
 
         ftfFechaExpiracionIni.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
 
+        jLabel9.setForeground(new java.awt.Color(0, 51, 244));
         jLabel9.setText("Hasta:");
 
         ftfFechaExpiracionFin.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
@@ -159,31 +173,29 @@ public class FiltrarLicencia extends javax.swing.JPanel {
             .addGroup(panTitularLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panTitularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panTitularLayout.createSequentialGroup()
-                        .addGroup(panTitularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(panTitularLayout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tfNroLicencia))
-                            .addGroup(panTitularLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(ftfFechaEmisionIni, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(ftfFechaEmisionFin, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panTitularLayout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tfApellido)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panTitularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panTitularLayout.createSequentialGroup()
+                            .addComponent(jLabel8)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(tfNroLicencia))
+                        .addGroup(panTitularLayout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(ftfFechaEmisionIni, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                            .addComponent(jLabel3)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(ftfFechaEmisionFin, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panTitularLayout.createSequentialGroup()
+                            .addComponent(jLabel6)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel7)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(tfApellido)))
                     .addGroup(panTitularLayout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -194,7 +206,7 @@ public class FiltrarLicencia extends javax.swing.JPanel {
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(ftfFechaExpiracionFin, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panTitularLayout.setVerticalGroup(
             panTitularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

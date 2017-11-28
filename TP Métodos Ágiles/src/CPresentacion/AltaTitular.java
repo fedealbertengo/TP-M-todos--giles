@@ -4,6 +4,7 @@ import CDatos.Conexion;
 import CEntidades.Titular;
 import CLogica.GestorTitular;
 import CLogica.GestorUsuario;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -33,6 +34,7 @@ public class AltaTitular extends javax.swing.JPanel {
     
     public AltaTitular(JFrame frameAnt, Container menAnt, String titAnt, Dimension dim, boolean redAnt, java.awt.event.WindowAdapter wdAnt) {
         initComponents();
+        this.setBackground(Color.BLACK);
         menuAnt = menAnt;
         jFrame = frameAnt;
         tituloAnt = titAnt;
@@ -97,6 +99,7 @@ public class AltaTitular extends javax.swing.JPanel {
 
         jTextField4.setText("jTextField4");
 
+        btnVolver.setForeground(new java.awt.Color(0, 51, 244));
         btnVolver.setText("Volver");
         btnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -104,6 +107,7 @@ public class AltaTitular extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setForeground(new java.awt.Color(0, 51, 244));
         jLabel1.setText("Nombre");
 
         tfNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -112,10 +116,13 @@ public class AltaTitular extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setForeground(new java.awt.Color(0, 51, 244));
         jLabel2.setText("Apellido");
 
+        jLabel3.setForeground(new java.awt.Color(0, 51, 244));
         jLabel3.setText("Documento");
 
+        cmbTipoDocumento.setForeground(new java.awt.Color(0, 51, 244));
         cmbTipoDocumento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "CI", "LE", "LC", "PS" }));
         cmbTipoDocumento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,6 +130,7 @@ public class AltaTitular extends javax.swing.JPanel {
             }
         });
 
+        jLabel5.setForeground(new java.awt.Color(0, 51, 244));
         jLabel5.setText("Fecha de Nacimiento");
 
         dateFechaNac.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-MM-yyyy"))));
@@ -133,10 +141,13 @@ public class AltaTitular extends javax.swing.JPanel {
             }
         });
 
+        jLabel4.setForeground(new java.awt.Color(0, 51, 244));
         jLabel4.setText("Direccion");
 
+        jLabel7.setForeground(new java.awt.Color(0, 51, 244));
         jLabel7.setText("Grupo Sanguineo");
 
+        cmbGrupoSang.setForeground(new java.awt.Color(0, 0, 244));
         cmbGrupoSang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "AB", "O" }));
         cmbGrupoSang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,12 +155,16 @@ public class AltaTitular extends javax.swing.JPanel {
             }
         });
 
+        jLabel8.setForeground(new java.awt.Color(0, 51, 244));
         jLabel8.setText("Factor");
 
+        cmbFactorSang.setForeground(new java.awt.Color(0, 51, 244));
         cmbFactorSang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "+", "-" }));
 
+        cbDonante.setForeground(new java.awt.Color(0, 51, 244));
         cbDonante.setText("Donante de Órganos");
 
+        btnAceptar.setForeground(new java.awt.Color(0, 51, 244));
         btnAceptar.setText("Aceptar");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,10 +172,13 @@ public class AltaTitular extends javax.swing.JPanel {
             }
         });
 
+        jLabel6.setForeground(new java.awt.Color(0, 51, 244));
         jLabel6.setText("Nacionalidad");
 
+        jLabel9.setForeground(new java.awt.Color(0, 51, 244));
         jLabel9.setText("Sexo");
 
+        cmbSexo.setForeground(new java.awt.Color(0, 51, 244));
         cmbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "F" }));
         cmbSexo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

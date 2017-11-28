@@ -13,6 +13,7 @@ import CLogica.GestorCosto;
 import CLogica.GestorLicencia;
 import CLogica.GestorTitular;
 import CLogica.GestorUsuario;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.sql.Date;
@@ -45,6 +46,7 @@ public class EmitirLicencia extends javax.swing.JPanel {
     Long costoLicencia = new Long(0);
 
     public EmitirLicencia(JFrame frameAnt, Container menAnt, String titAnt, Dimension dim, boolean redAnt, java.awt.event.WindowAdapter wdAnt) {
+        //this.setBackground(Color.BLACK);
         initComponents();
         menuAnt = menAnt;
         jFrame = frameAnt;
@@ -101,6 +103,7 @@ public class EmitirLicencia extends javax.swing.JPanel {
         jLCosto = new javax.swing.JLabel();
         btnAceptar = new javax.swing.JButton();
 
+        btnVolver.setForeground(new java.awt.Color(0, 51, 244));
         btnVolver.setText("Volver");
         btnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -108,8 +111,10 @@ public class EmitirLicencia extends javax.swing.JPanel {
             }
         });
 
+        panTitular.setBackground(new java.awt.Color(0, 0, 0));
         panTitular.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        cmbTipoDocumento.setForeground(new java.awt.Color(0, 51, 244));
         cmbTipoDocumento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CI", "LE", "LC", "PS", "DNI" }));
         cmbTipoDocumento.setEnabled(false);
         cmbTipoDocumento.addActionListener(new java.awt.event.ActionListener() {
@@ -120,8 +125,10 @@ public class EmitirLicencia extends javax.swing.JPanel {
 
         tfDocumento.setEditable(false);
 
+        jLabel5.setForeground(new java.awt.Color(0, 51, 244));
         jLabel5.setText("Documento");
 
+        jLabel6.setForeground(new java.awt.Color(0, 51, 244));
         jLabel6.setText("Nombre");
 
         tfNombre.setEditable(false);
@@ -133,8 +140,10 @@ public class EmitirLicencia extends javax.swing.JPanel {
 
         tfApellido.setEditable(false);
 
+        jLabel7.setForeground(new java.awt.Color(0, 51, 244));
         jLabel7.setText("Apellido");
 
+        jButton3.setForeground(new java.awt.Color(0, 51, 244));
         jButton3.setText("Seleccionar Titular");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,6 +151,7 @@ public class EmitirLicencia extends javax.swing.JPanel {
             }
         });
 
+        jButton4.setForeground(new java.awt.Color(0, 51, 244));
         jButton4.setText("Nuevo Titular");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,6 +159,7 @@ public class EmitirLicencia extends javax.swing.JPanel {
             }
         });
 
+        jLabel8.setForeground(new java.awt.Color(0, 51, 244));
         jLabel8.setText("Id de Titular");
 
         tfIdTitular.addActionListener(new java.awt.event.ActionListener() {
@@ -223,8 +234,10 @@ public class EmitirLicencia extends javax.swing.JPanel {
                     .addContainerGap(12, Short.MAX_VALUE)))
         );
 
+        panDetLic.setBackground(new java.awt.Color(0, 0, 0));
         panDetLic.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        cmbClase.setForeground(new java.awt.Color(0, 51, 244));
         cmbClase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "C", "E", "G" }));
         cmbClase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,14 +245,18 @@ public class EmitirLicencia extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setForeground(new java.awt.Color(0, 51, 244));
         jLabel1.setText("Clase");
 
+        jLabel2.setForeground(new java.awt.Color(0, 51, 244));
         jLabel2.setText("Fecha de Expiración");
 
         tfFechaExpiracion.setEditable(false);
 
+        jLabel3.setForeground(new java.awt.Color(0, 51, 244));
         jLabel3.setText("Costo: $");
 
+        jLCosto.setForeground(new java.awt.Color(0, 51, 244));
         jLCosto.setText("x");
 
         javax.swing.GroupLayout panDetLicLayout = new javax.swing.GroupLayout(panDetLic);
@@ -275,6 +292,7 @@ public class EmitirLicencia extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        btnAceptar.setForeground(new java.awt.Color(0, 51, 244));
         btnAceptar.setText("Aceptar");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -1,5 +1,6 @@
 package CPresentacion;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.JFrame;
@@ -18,6 +19,7 @@ public class MenuTitulares extends javax.swing.JPanel {
 
     public MenuTitulares(JFrame frameAnt, Container menAnt, String titAnt, Dimension dim, boolean redAnt, java.awt.event.WindowAdapter wdAnt) {
         initComponents();
+        this.setBackground(Color.BLACK);
         menuAnt = menAnt;
         jFrame = frameAnt;
         tituloAnt = titAnt;
@@ -47,6 +49,7 @@ public class MenuTitulares extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(296, 262));
 
+        btnVolver.setForeground(new java.awt.Color(0, 51, 244));
         btnVolver.setText("Volver");
         btnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -54,6 +57,7 @@ public class MenuTitulares extends javax.swing.JPanel {
             }
         });
 
+        btnAltaTitular.setForeground(new java.awt.Color(0, 51, 255));
         btnAltaTitular.setText("Alta de Titular");
         btnAltaTitular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,6 +65,7 @@ public class MenuTitulares extends javax.swing.JPanel {
             }
         });
 
+        btnAltaTitular1.setForeground(new java.awt.Color(0, 51, 255));
         btnAltaTitular1.setText("Buscar Titulares");
         btnAltaTitular1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

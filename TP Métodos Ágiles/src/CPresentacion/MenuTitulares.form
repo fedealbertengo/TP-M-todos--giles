@@ -56,6 +56,9 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnVolver">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f4" green="33" red="0" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Volver"/>
       </Properties>
       <Events>
@@ -64,6 +67,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnAltaTitular">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="33" red="0" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Alta de Titular"/>
       </Properties>
       <Events>
@@ -72,6 +78,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnAltaTitular1">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="33" red="0" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Buscar Titulares"/>
       </Properties>
       <Events>

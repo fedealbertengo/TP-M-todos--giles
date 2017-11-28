@@ -1,5 +1,6 @@
 package CPresentacion;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.JFrame;
@@ -16,6 +17,7 @@ public class MenuLicencias extends javax.swing.JPanel {
 
     public MenuLicencias(JFrame frameAnt, Container menAnt, String titAnt, Dimension dim, boolean redAnt, java.awt.event.WindowAdapter wdAnt) {
         initComponents();
+        this.setBackground(Color.BLACK);
         menuAnt = menAnt;
         jFrame = frameAnt;
         tituloAnt = titAnt;
@@ -43,6 +45,7 @@ public class MenuLicencias extends javax.swing.JPanel {
         btnVolver = new javax.swing.JButton();
         btnEmitirLicencia1 = new javax.swing.JButton();
 
+        btnEmitirLicencia.setForeground(new java.awt.Color(0, 51, 244));
         btnEmitirLicencia.setText("Emitir Licencia");
         btnEmitirLicencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,6 +53,7 @@ public class MenuLicencias extends javax.swing.JPanel {
             }
         });
 
+        btnVolver.setForeground(new java.awt.Color(0, 51, 244));
         btnVolver.setText("Volver");
         btnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -57,6 +61,7 @@ public class MenuLicencias extends javax.swing.JPanel {
             }
         });
 
+        btnEmitirLicencia1.setForeground(new java.awt.Color(0, 51, 244));
         btnEmitirLicencia1.setText("Ver Licencias Expiradas");
         btnEmitirLicencia1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

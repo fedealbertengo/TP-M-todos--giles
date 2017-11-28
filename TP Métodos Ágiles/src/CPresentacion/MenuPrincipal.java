@@ -2,6 +2,7 @@ package CPresentacion;
 
 import CLogica.GestorLicencia;
 import CLogica.GestorUsuario;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -11,6 +12,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     java.awt.event.WindowAdapter wd;
     
     public MenuPrincipal() {
+        this.getContentPane().setBackground(Color.black);
         initComponents();
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -60,6 +62,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnMenuTitulares.setForeground(new java.awt.Color(0, 51, 255));
         btnMenuTitulares.setText("Menu de Titulares");
         btnMenuTitulares.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,8 +70,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnMenuUsuarios.setForeground(new java.awt.Color(0, 51, 255));
         btnMenuUsuarios.setText("Menu de Usuarios");
 
+        btnMenuLicencias.setForeground(new java.awt.Color(0, 51, 255));
         btnMenuLicencias.setText("Menu de Licencias");
         btnMenuLicencias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

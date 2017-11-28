@@ -133,6 +133,8 @@ public class FiltrarTitular extends javax.swing.JPanel {
 
         jToggleButton1.setText("jToggleButton1");
 
+        setBackground(new java.awt.Color(0, 0, 0));
+
         tabTitulares.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -152,8 +154,10 @@ public class FiltrarTitular extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tabTitulares);
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        btnFiltrar.setForeground(new java.awt.Color(0, 51, 244));
         btnFiltrar.setText("Filtrar");
         btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,8 +165,10 @@ public class FiltrarTitular extends javax.swing.JPanel {
             }
         });
 
+        panTitular.setBackground(new java.awt.Color(0, 0, 0));
         panTitular.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        cmbTipoDocumento.setForeground(new java.awt.Color(0, 51, 244));
         cmbTipoDocumento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Filtrar", "CI", "LE", "LC", "PS", "DNI" }));
         cmbTipoDocumento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,8 +176,10 @@ public class FiltrarTitular extends javax.swing.JPanel {
             }
         });
 
+        jLabel5.setForeground(new java.awt.Color(0, 51, 244));
         jLabel5.setText("Documento");
 
+        jLabel6.setForeground(new java.awt.Color(0, 51, 244));
         jLabel6.setText("Nombre");
 
         tfNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -180,8 +188,10 @@ public class FiltrarTitular extends javax.swing.JPanel {
             }
         });
 
+        jLabel7.setForeground(new java.awt.Color(0, 51, 244));
         jLabel7.setText("Apellido");
 
+        jLabel8.setForeground(new java.awt.Color(0, 51, 244));
         jLabel8.setText("Id de Titular");
 
         javax.swing.GroupLayout panTitularLayout = new javax.swing.GroupLayout(panTitular);
