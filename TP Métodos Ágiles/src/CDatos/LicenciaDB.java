@@ -18,7 +18,7 @@ public class LicenciaDB {
     
     public static Licencia getUltimaLicencia(Long dniTitular) throws Exception{
         try{
-            return ((ArrayList<Licencia>)((Object)Conexion.consultar("SELECT L.* FROM Licencia L INNER JOIN Titular T ON L.IdTitular = T.ID WHERE T.NumeroDocumento = " + dniTitular + " ORDER BY FechaEmision DESC;", Licencia.class))).get(0);
+            return ((ArrayList<Licencia>)((Object)Conexion.consultar("SELECT L.* FROM Licencia L INNER JOIN Titular T ON L.IdTitular = T.ID WHERE T.NumeroDocumento = " + dniTitular + " ORDER BY L.ID DESC;", Licencia.class))).get(0);
         }
         catch(Exception ex){
             throw ex;
