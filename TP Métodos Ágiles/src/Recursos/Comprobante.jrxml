@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.4.3.final using JasperReports Library version 6.4.3  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteLicencia" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a9add851-2d22-4fc9-b949-b5b8c8cf7490">
-	<parameter name="TipoDoc" class="java.lang.String"/>
+	<parameter name="NroLicencia" class="java.lang.Long"/>
 	<parameter name="Apellido" class="java.lang.String"/>
 	<parameter name="Nombre" class="java.lang.String"/>
-	<parameter name="Direccion" class="java.lang.String"/>
-	<parameter name="TipoLicencia" class="java.lang.String"/>
-	<parameter name="Documento" class="java.lang.Long"/>
-	<parameter name="Precio" class="java.lang.Double"/>
+	<parameter name="FechaNacimiento" class="java.lang.String"/>
+	<parameter name="Domicilio" class="java.lang.String"/>
+	<parameter name="Nacionalidad" class="java.lang.String"/>
+	<parameter name="Emision" class="java.lang.String"/>
+	<parameter name="Sexo" class="java.lang.String"/>
+	<parameter name="Donante" class="java.lang.String"/>
+	<parameter name="GrupoSanguineo" class="java.lang.String"/>
+	<parameter name="FactorRH" class="java.lang.String"/>
+	<parameter name="Clase" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -17,15 +22,12 @@
 			<staticText>
 				<reportElement x="0" y="0" width="214" height="30" uuid="dccacf21-59ad-4a2d-a71a-857438a48881"/>
 				<textElement>
-					<font size="20"/>
+					<font fontName="Abadi MT Condensed Extra Bold" size="20"/>
 				</textElement>
 				<text><![CDATA[Comprobante de Pago]]></text>
 			</staticText>
-                        <line>
-                            <reportElement x="0" y="35" width="500" height="2"/>
-                        </line> 
 			<staticText>
-				<reportElement x="0" y="40" width="243" height="30" uuid="5c0e5d7a-2300-4341-a5f7-12fc6e71c4af"/>
+				<reportElement x="0" y="30" width="243" height="30" uuid="5c0e5d7a-2300-4341-a5f7-12fc6e71c4af"/>
 				<textElement>
 					<font size="15"/>
 				</textElement>
@@ -33,30 +35,38 @@
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="70" width="100" height="30" uuid="c5e60e35-7446-4cd3-9220-efcfbec7b879"/>
-				<text><![CDATA[Nombre: ]]></text>
+				<text><![CDATA[Nombre]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="100" width="100" height="30" uuid="617a6313-e0c4-4eb5-aac9-4ece9ecea7a1"/>
 				<text><![CDATA[Apellido: ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="130" width="100" height="30" uuid="9b006752-96e5-4856-bf19-a77178fbda91"/>
+				<reportElement x="0" y="160" width="100" height="30" uuid="9b006752-96e5-4856-bf19-a77178fbda91"/>
 				<text><![CDATA[Tipo:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="280" y="100" width="100" height="30" uuid="e396ae9e-f52f-48eb-9019-e7cd8661a0a6"/>
-				<text><![CDATA[Fecha de creación: ]]></text>
-			</staticText>
-                        <staticText>
-				<reportElement x="280" y="130" width="100" height="30" uuid="e396ae9e-f52f-48eb-9019-e7cd8661a0a6"/>
-				<text><![CDATA[Nº Documento: ]]></text>
+				<reportElement x="280" y="160" width="100" height="30" uuid="920fdb34-81ee-4077-a53b-aaa35aa6bcbc"/>
+				<text><![CDATA[Documento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="280" y="70" width="100" height="30" uuid="0fd942e3-d44b-4c01-bc3b-cf243b606c37"/>
+				<reportElement x="280" y="130" width="100" height="30" uuid="e396ae9e-f52f-48eb-9019-e7cd8661a0a6"/>
+				<text><![CDATA[Fecha de creación: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="100" width="100" height="30" uuid="0fd942e3-d44b-4c01-bc3b-cf243b606c37"/>
 				<text><![CDATA[Dirección:]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="280" y="70" width="100" height="30" uuid="253d0c49-0038-4eed-8a5e-212b5ac9ecd9"/>
+				<text><![CDATA[Sexo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="130" width="100" height="30" uuid="9e899446-f33b-43e2-81b9-9543a1bb8147"/>
+				<text><![CDATA[Nacionalidad]]></text>
+			</staticText>
 			<textField pattern="MMMMM dd, yyyy">
-				<reportElement x="380" y="100" width="100" height="30" uuid="64840abd-9ffa-4896-9ab4-5326338374cb"/>
+				<reportElement x="380" y="130" width="100" height="30" uuid="64840abd-9ffa-4896-9ab4-5326338374cb"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -68,39 +78,41 @@
 				<textFieldExpression><![CDATA[$P{Apellido}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="100" y="130" width="100" height="30" uuid="678edbed-172b-42b4-b79f-13fbc018f339"/>
+				<reportElement x="100" y="130" width="100" height="30" uuid="ef4e7c5e-1de5-4ad4-b724-c91644ec596d"/>
+				<textFieldExpression><![CDATA[$P{Nacionalidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="160" width="100" height="30" uuid="678edbed-172b-42b4-b79f-13fbc018f339"/>
 				<textFieldExpression><![CDATA[$P{TipoDoc}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="380" y="70" width="100" height="30" uuid="cc17aee9-343b-4e97-b03c-d71d4b61ecbc"/>
+				<reportElement x="380" y="70" width="100" height="30" uuid="4f1f5756-123d-4028-854c-3435c828f920"/>
+				<textFieldExpression><![CDATA[$P{Sexo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="100" width="100" height="30" uuid="cc17aee9-343b-4e97-b03c-d71d4b61ecbc"/>
 				<textFieldExpression><![CDATA[$P{Direccion}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="380" y="130" width="100" height="30" uuid="9c09c857-d9e6-4fde-a038-e8fab5b11823"/>
+				<reportElement x="380" y="160" width="100" height="30" uuid="9c09c857-d9e6-4fde-a038-e8fab5b11823"/>
 				<textFieldExpression><![CDATA[$P{Documento}]]></textFieldExpression>
 			</textField>
-                        <line>
-                            <reportElement x="0" y="160" width="500" height="2"/>
-                        </line> 
-                        <staticText>
-				<reportElement x="0" y="170" width="100" height="30" uuid="2826b424-830b-4911-894e-77079fd9cda1"/>
-                                <text><![CDATA[Tipo de Licencia:]]></text>
+			<staticText>
+				<reportElement x="0" y="250" width="100" height="30" uuid="2826b424-830b-4911-894e-77079fd9cda1"/>
+				<text><![CDATA[Tipo de Licencia:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="280" y="170" width="100" height="30" uuid="3161d8f6-561c-4336-8e91-3c4f1baf79bd"/>
+				<reportElement x="280" y="250" width="100" height="30" uuid="3161d8f6-561c-4336-8e91-3c4f1baf79bd"/>
 				<text><![CDATA[Precio: $]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="100" y="170" width="100" height="30" uuid="4c601ed1-97fe-4f9e-9b03-b8c79e2ebff0"/>
+				<reportElement x="100" y="250" width="100" height="30" uuid="4c601ed1-97fe-4f9e-9b03-b8c79e2ebff0"/>
 				<textFieldExpression><![CDATA[$P{TipoLicencia}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="380" y="170" width="100" height="30" uuid="08a62437-70fb-4621-b196-f97607dde106"/>
+				<reportElement x="380" y="250" width="100" height="30" uuid="08a62437-70fb-4621-b196-f97607dde106"/>
 				<textFieldExpression><![CDATA[$P{Precio}]]></textFieldExpression>
 			</textField>
-                        <line>
-                            <reportElement x="0" y="190" width="500" height="2"/>
-                        </line> 
 		</band>
 	</background>
 </jasperReport>

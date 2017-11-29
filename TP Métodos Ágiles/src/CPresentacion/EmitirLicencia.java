@@ -424,12 +424,6 @@ public class EmitirLicencia extends javax.swing.JPanel {
             String fechaActual = dateFormat.format(new java.util.Date());
             java.sql.Date fechaExpiracion = calcularFechaExpiracion(((String)cmbClase.getSelectedItem()).charAt(0), Long.parseLong(tfIdTitular.getText()));
             tfFechaExpiracion.setText(dateFormat.format(fechaExpiracion));
-            Long idOriginal = GestorLicencia.recuperarIdOriginal(Long.parseLong(tfIdTitular.getText()));
-            boolean esRenovacion = (idOriginal != -1);
-            char clase = ((String)cmbClase.getSelectedItem()).charAt(0);
-            java.sql.Date fechaAct = java.sql.Date.valueOf(fechaActual);
-            Usuario usuLog = GestorUsuario.getUsuarioLogeado();
-            licencia = new Licencia(Long.parseLong("0"), idTitular, clase, fechaAct, fechaExpiracion, usuLog.getID(), idOriginal, esRenovacion);
             costoLicencia = GestorCosto.calcularCosto(licencia, false);
             jLCosto.setText(costoLicencia.toString());
         } catch (Exception ex) {
