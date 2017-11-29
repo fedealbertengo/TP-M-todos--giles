@@ -29,7 +29,7 @@
 			</staticText>
 			<staticText>
 				<reportElement x="170" y="42" width="80" height="20" uuid="5f987d89-df42-4e3e-bfa1-44f0a6aceb2a"/>
-				<text><![CDATA[LICENCIA Nยบ]]></text>
+				<text><![CDATA[LICENCIA Nº]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="422" y="73" width="52" height="20" uuid="b1bc8e29-e88d-4a38-9ad9-6e44bc1295cb"/>

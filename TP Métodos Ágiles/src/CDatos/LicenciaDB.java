@@ -16,6 +16,15 @@ public class LicenciaDB {
         }
     }
     
+    public static Licencia getUltimaLicencia(Long dniTitular) throws Exception{
+        try{
+            return ((ArrayList<Licencia>)((Object)Conexion.consultar("SELECT L.* FROM Licencia L INNER JOIN Titular T ON L.IdTitular = T.ID WHERE T.NumeroDocumento = 39248184 ORDER BY FechaEmision DESC;", Licencia.class))).get(0);
+        }
+        catch(Exception ex){
+            throw ex;
+        }
+    }
+    
     public static Licencia getLicencia(long idLic) throws Exception{
         try{
             String query = "SELECT * FROM Licencia WHERE ID = " + idLic;

@@ -25,6 +25,15 @@ public class GestorLicencia {
     
     static JFileChooser chooser;
     
+    public static Licencia getUltimaLicencia(long dniTitular) throws Exception{
+        try{
+            return LicenciaDB.getUltimaLicencia(dniTitular);
+        }
+        catch(Exception ex){
+            throw ex;
+        }
+    }
+    
     public static Licencia getLicencia(long idLic) throws Exception{
         try{
             return LicenciaDB.getLicencia(idLic);

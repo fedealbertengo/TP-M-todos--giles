@@ -368,9 +368,8 @@ public class EmitirLicencia extends javax.swing.JPanel {
                 //validar
                GestorLicencia.validarLicencia(licencia); 
                GestorLicencia.altaLicencia(licencia);
-               GestorLicencia.generarReportaLicencia(this, licencia);
-               GestorLicencia.generarComprobante(this, licencia, new Double(costoLicencia));
-               
+               GestorLicencia.generarReportaLicencia(this, GestorLicencia.getUltimaLicencia(licencia.getTitular().getNumeroDocumento()));
+               GestorLicencia.generarComprobante(this, GestorLicencia.getUltimaLicencia(licencia.getTitular().getNumeroDocumento()), new Double(costoLicencia));
             }
             else{
                 JOptionPane.showMessageDialog(null, "Los campos no pueden estar vacios.", "Error", JOptionPane.ERROR_MESSAGE);
