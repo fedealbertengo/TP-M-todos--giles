@@ -30,6 +30,8 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 /**
@@ -37,9 +39,12 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author fede_
  */
 public class GestorUtilidades {
-    public static void generarReporte(Component ctx, String nombreArchivo, String urlSalida, Map<String, Object> parametros) throws Exception{
+    public static void generarReporte(Component ctx, String urlEntrada, String urlSalida, Map<String, Object> parametros) throws Exception{
         try{    
-            JasperReport reporte = JasperCompileManager.compileReport(ctx.getClass().getResourceAsStream("/Recursos/" + nombreArchivo));
+            
+            JasperDesign jasperDesign = JRXmlLoader.load(urlEntrada);
+            
+            JasperReport reporte = JasperCompileManager.compileReport(jasperDesign);
             
             JRDataSource dataSource = new JREmptyDataSource();
 

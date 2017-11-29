@@ -251,7 +251,7 @@ public class GestorLicencia {
                 parametros.put("FactorRH", (lic.getTitular().isFactorRH()) ? "+" : "-");
                 parametros.put("Clase", lic.getClase().toString());
                 parametros.put("REPORTS_DIR", projectPath + "\\src\\Recursos");
-                GestorUtilidades.generarReporte(ctx, "ReporteDeLicencia.jrxml", chooser.getSelectedFile().getAbsolutePath() + "\\Licencia - " + lic.getTitular().getApellido() + " " + lic.getTitular().getNombre() + ".pdf", parametros);
+                GestorUtilidades.generarReporte(ctx, projectPath + "\\src\\Recursos\\ReporteDeLicencia.jrxml", chooser.getSelectedFile().getAbsolutePath() + "\\Licencia - " + lic.getTitular().getApellido() + " " + lic.getTitular().getNombre() + ".pdf", parametros);
             }   
         }
         catch(Exception ex){
@@ -274,11 +274,11 @@ public class GestorLicencia {
                 parametros.put("Nacionalidad", lic.getTitular().getNacionalidad());
                 parametros.put("Sexo", (lic.getTitular().getSexo()).toString());
                 parametros.put("TipoLicencia", lic.getClase().toString());
-                parametros.put("TipoDoc", lic.getTitular().TipoDocumento);
-                parametros.put("Documento", lic.getClase().toString());
+                parametros.put("TipoDoc", lic.getTitular().getTipoDocumento());
+                parametros.put("Documento", lic.getTitular().getNumeroDocumento());
                 parametros.put("Precio", precio);
                 parametros.put("REPORTS_DIR", projectPath + "\\src\\Recursos");
-                GestorUtilidades.generarReporte(ctx, "Comprobante.jrxml", chooser.getSelectedFile().getAbsolutePath() + "\\Comprobante - " + lic.getTitular().getApellido() + " " + lic.getTitular().getNombre() + ".pdf", parametros);
+                GestorUtilidades.generarReporte(ctx, projectPath + "\\src\\Recursos\\Comprobante.jrxml", chooser.getSelectedFile().getAbsolutePath() + "\\Comprobante - " + lic.getTitular().getApellido() + " " + lic.getTitular().getNombre() + ".pdf", parametros);
             }   
         }
         catch(Exception ex){
