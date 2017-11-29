@@ -36,20 +36,19 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class GestorUtilidades {
     public static void generarReporte(String urlEntrada, String urlSalida, Map<String, Object> parametros) throws Exception{
-    try{    
-        JasperReport reporte = JasperCompileManager.compileReport(urlEntrada);
-        
-        JRDataSource dataSource = new JREmptyDataSource();
-        
-        JasperPrint impresion = (JasperPrint) JasperFillManager.fillReport(reporte, parametros, dataSource);
-        
-        JasperExportManager.exportReportToPdfFile(impresion, urlSalida);
-        
-        JasperViewer.viewReport(impresion, false);
-    }catch(JRException ex){
-        throw new Exception("No pudo generarse el reporte");
-    }
+        try{    
+            JasperReport reporte = JasperCompileManager.compileReport(urlEntrada);
 
+            JRDataSource dataSource = new JREmptyDataSource();
+
+            JasperPrint impresion = (JasperPrint) JasperFillManager.fillReport(reporte, parametros, dataSource);
+
+            JasperExportManager.exportReportToPdfFile(impresion, urlSalida);
+
+            JasperViewer.viewReport(impresion, false);
+        }catch(Exception ex){
+            throw new Exception("No pudo generarse el reporte");
+        }
     }
             
     public static void llenarTabla(JTable tabla, ArrayList<Object> list) throws Exception{

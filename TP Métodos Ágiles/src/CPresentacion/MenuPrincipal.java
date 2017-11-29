@@ -2,12 +2,9 @@ package CPresentacion;
 
 import CLogica.GestorLicencia;
 import CLogica.GestorUsuario;
-<<<<<<< HEAD
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-=======
->>>>>>> parent of 1d26163... Merge branch 'master' of https://github.com/fedealbertengo/TP-M-todos--giles
 import javax.swing.JOptionPane;
 
 public class MenuPrincipal extends javax.swing.JFrame {

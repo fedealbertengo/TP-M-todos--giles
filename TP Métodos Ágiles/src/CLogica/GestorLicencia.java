@@ -252,7 +252,7 @@ public class GestorLicencia {
                 parametros.put("Clase", lic.getClase().toString());
                 parametros.put("REPORTS_DIR", projectPath + "\\src\\Recursos");
                 //parametros.put("REPORTS_DIR", "/Users/admin/Documents/agiles/TP-M-todos--giles/TP Métodos Ágiles/src/Recursos");
-                GestorUtilidades.generarReporte(projectPath + "\\src\\Recursos\\ReporteLicencia.jrxml", chooser.getSelectedFile().getAbsolutePath() + "\\Licencia" + lic.getTitular().getApellido() + lic.getTitular().getNombre() + ".pdf", parametros);
+                GestorUtilidades.generarReporte(projectPath + "\\src\\Recursos\\ReporteLicencia.jrxml", chooser.getSelectedFile().getAbsolutePath() + "\\Licencia - " + lic.getTitular().getApellido() + " " + lic.getTitular().getNombre() + ".pdf", parametros);
                 //GestorUtilidades.generarReporte("/Users/admin/Documents/agiles/TP-M-todos--giles/TP Métodos Ágiles/src/Recursos/ReporteLicencia.jrxml", chooser.getSelectedFile().getAbsolutePath() + "/Licencia" + lic.getTitular().getApellido() + lic.getTitular().getNombre() + ".pdf", parametros);
 
             }   
@@ -282,7 +282,7 @@ public class GestorLicencia {
                 parametros.put("Precio", precio);
 
                 parametros.put("REPORTS_DIR", projectPath + "\\src\\Recursos");
-                GestorUtilidades.generarReporte(projectPath + "\\src\\Recursos\\Comprobante.jrxml", chooser.getSelectedFile().getAbsolutePath() + "\\Licencia" + lic.getTitular().getApellido() + lic.getTitular().getNombre() + ".pdf", parametros);
+                GestorUtilidades.generarReporte(projectPath + "\\src\\Recursos\\Comprobante.jrxml", chooser.getSelectedFile().getAbsolutePath() + "\\Comprobante - " + lic.getTitular().getApellido() + " " + lic.getTitular().getNombre() + ".pdf", parametros);
             }   
         }
         catch(Exception ex){
