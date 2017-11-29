@@ -367,7 +367,7 @@ public class EmitirLicencia extends javax.swing.JPanel {
             if(licencia != null){
                 //validar
                GestorLicencia.validarLicencia(licencia); 
-               //GestorLicencia.altaLicencia(licencia);
+               GestorLicencia.altaLicencia(licencia);
                GestorLicencia.generarReportaLicencia(this, licencia);
                GestorLicencia.generarComprobante(this, licencia, new Double(costoLicencia));
                

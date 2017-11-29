@@ -8,6 +8,7 @@ package CLogica;
 import CDatos.Conexion;
 import CEntidades.ConsultaGenerica;
 import CEntidades.Licencia;
+import java.awt.Component;
 import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.text.DateFormat;
@@ -18,6 +19,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
+import javax.naming.Context;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JRDataSource;
@@ -35,10 +37,10 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author fede_
  */
 public class GestorUtilidades {
-    public static void generarReporte(String urlEntrada, String urlSalida, Map<String, Object> parametros) throws Exception{
+    public static void generarReporte(Component ctx, String nombreArchivo, String urlSalida, Map<String, Object> parametros) throws Exception{
         try{    
-            JasperReport reporte = JasperCompileManager.compileReport(urlEntrada);
-
+            JasperReport reporte = JasperCompileManager.compileReport(ctx.getClass().getResourceAsStream("/Recursos/" + nombreArchivo));
+            
             JRDataSource dataSource = new JREmptyDataSource();
 
             JasperPrint impresion = (JasperPrint) JasperFillManager.fillReport(reporte, parametros, dataSource);
